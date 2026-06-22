@@ -1,0 +1,346 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const faqs = [
+  {
+    q: 'Does Homynex charge a monthly fee?',
+    a: 'No. Homynex is a one-time purchase with $0/month forever — no subscription, no contract, and no recurring monitoring bill. Once the system is installed and paid for, the homeowner owns it outright. There is no ongoing charge to keep using your lights, locks, cameras, climate or scenes.',
+  },
+  {
+    q: 'Who installs it?',
+    a: 'Your own licensed local electrician installs Homynex during construction or renovation — there is no proprietary technician and no service lock-in. Because it is wired in by the same trade already on site, the system is part of the home from day one rather than a kit a separate company has to come back and mount.',
+  },
+  {
+    q: 'How is it different from Vivint?',
+    a: 'Subscription systems such as Vivint are typically sold with a monthly bill and a contract, and the provider sends its own technicians and retains a service relationship. Homynex flips that model: you buy the whole-home system once, own the hardware outright, pay $0/month, and have it installed by your licensed local electrician. We aim to be fair here — Vivint bundles professional monitoring into its fee, and some homeowners value that. Homynex is the right fit if you want ownership without an ongoing bill.',
+  },
+  {
+    q: 'Can builders offer it?',
+    a: 'Yes. Homynex is quoted per home as one integrated package, so builders can specify it across an entire development and fold it into the upgrade budget instead of a lifetime of monthly payments. Buyers take ownership of a fully wired-in smart home with no subscription to inherit at closing.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const compare = [
+  {
+    row: 'Monthly fee',
+    homynex: '$0 / month, forever',
+    sub: 'A recurring monthly charge for as long as you use it',
+  },
+  {
+    row: 'Contract',
+    homynex: 'None — bought outright',
+    sub: 'Commonly a multi-year service agreement',
+  },
+  {
+    row: 'Who owns the system',
+    homynex: 'The homeowner owns the hardware',
+    sub: 'Often tied to the provider while under contract',
+  },
+  {
+    row: 'Who installs it',
+    homynex: 'Your licensed local electrician',
+    sub: "The provider's own technicians",
+  },
+  {
+    row: 'Upgrades',
+    homynex: 'Add devices on the same open platform',
+    sub: 'Typically through the provider, sometimes re-contracted',
+  },
+  {
+    row: 'Moving / cancelling',
+    homynex: 'Nothing to cancel — it is already yours',
+    sub: 'May involve early-termination or transfer terms',
+  },
+];
+---
+
+<Base
+  title="No-Monthly-Fee Smart Home (2026 Guide) | Homynex"
+  description="A no-monthly-fee smart home means you buy the system once and own it outright — no subscription, no contract, no monitoring bill. How it compares to Vivint and why it fits new builds. Updated 2026."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <Nav current="nmf" />
+
+  <!-- HERO -->
+  <section class="nmf-hero">
+    <div class="nmf-hero-inner">
+      <p class="nmf-kicker">Buying guide · updated 2026-06-22</p>
+      <h1 class="nmf-h1">The no-monthly-fee smart home, explained</h1>
+      <p class="nmf-sub">
+        A no-monthly-fee smart home is one you buy once and own outright — no subscription, no
+        contract, no monitoring bill. Here is what that means, how it compares to subscription
+        systems such as Vivint, and why it fits new builds along Utah's Wasatch Front.
+      </p>
+      <p class="nmf-updated">Last updated June 22, 2026</p>
+    </div>
+  </section>
+
+  <!-- CITABLE PASSAGE -->
+  <section class="cite" data-reveal>
+    <div class="cite-inner">
+      <p class="cite-kicker">What a no-monthly-fee smart home is</p>
+      <p class="cite-text">
+        A <strong>no-monthly-fee smart home</strong> means you buy the system once and own it
+        outright — there is no subscription, no contract and no monitoring bill. You pay for the
+        hardware and installation a single time, and then it is yours to use at $0/month for as long
+        as you live there. This is the opposite of subscription systems such as Vivint, which are
+        typically sold with a monthly fee and a service agreement so the provider keeps billing you
+        to keep the system running. <strong>Homynex</strong> is built on the no-monthly-fee model:
+        it is quoted per home as one integrated whole-home package, installed by your own licensed
+        local electrician, and owned outright with <strong>$0/month forever</strong>. It is supplied
+        by SmartSync Electric and offered across Utah's Wasatch Front, so the cost lives inside the
+        build budget instead of a lifetime of recurring payments.
+      </p>
+      <ul class="cite-points">
+        <li><strong>Bought once, owned outright.</strong> No subscription, no contract, no monitoring bill.</li>
+        <li><strong>Your electrician installs it.</strong> Licensed and local — no proprietary technician.</li>
+        <li><strong>Quoted per home.</strong> One whole-home package, $0/month forever.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- COMPARISON TABLE -->
+  <section class="cmp" data-reveal>
+    <div class="cmp-inner">
+      <p class="cmp-kicker">Side by side</p>
+      <h2 class="cmp-h2">One-time purchase vs subscription</h2>
+      <p class="cmp-lead">
+        How a one-time, owned system compares with a typical professionally-monitored subscription.
+        We have tried to keep this fair — subscriptions bundle in monitoring that some homeowners
+        genuinely want.
+      </p>
+      <div class="cmp-scroll">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th scope="col" class="cmp-rowhead">&nbsp;</th>
+              <th scope="col">Homynex (one-time)</th>
+              <th scope="col">Subscription systems (e.g. Vivint)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {compare.map((c) => (
+              <tr>
+                <th scope="row">{c.row}</th>
+                <td class="cmp-good">{c.homynex}</td>
+                <td>{c.sub}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="cmp-note">
+        Subscription details vary by plan and provider; figures and terms above are general and
+        illustrative. Vivint is a registered trademark of its owner and is referenced for comparison
+        only.
+      </p>
+    </div>
+  </section>
+
+  <!-- THE 10-YEAR MATH -->
+  <section class="math" data-reveal>
+    <div class="math-card">
+      <p class="math-kicker">The 10-year math</p>
+      <h2 class="math-h2">A monthly fee never stops. A one-time purchase does.</h2>
+      <div class="math-grid">
+        <div class="math-cell">
+          <div class="math-tag">Subscription · illustrative</div>
+          <div class="math-v">tens of $ / mo</div>
+          <p class="math-d">
+            A typical professionally-monitored subscription runs on the order of tens of dollars a
+            month. Carried over ten years, an illustrative bill in that range adds up to
+            <strong>thousands of dollars</strong> — and the meter keeps running after that.
+          </p>
+        </div>
+        <div class="math-cell math-cell--us">
+          <div class="math-tag math-tag--us">Homynex · one-time</div>
+          <div class="math-v">$0 / mo after</div>
+          <p class="math-d">
+            Homynex is a one-time purchase quoted per home, with <strong>$0/month after</strong>.
+            There is no recurring fee to total up — once it is installed, the ten-year cost of
+            keeping it running is nothing.
+          </p>
+        </div>
+      </div>
+      <p class="math-fine">
+        The subscription figure above is <strong>illustrative only</strong> and not a quote from any
+        provider. We do not publish a Homynex price because every home is quoted individually — ask
+        for a quote for your specific floor plan.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" data-reveal>
+    <div class="faq-inner">
+      <p class="faq-kicker">Common questions</p>
+      <h2 class="faq-h2">No-monthly-fee, answered</h2>
+      <div class="faq-list">
+        {faqs.map((f) => (
+          <div class="faq-item">
+            <h3>{f.q}</h3>
+            <p>{f.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta" data-reveal>
+    <div class="cta-card">
+      <p class="cta-kicker">Own it, don't rent it</p>
+      <h2>Get a no-monthly-fee quote for your home</h2>
+      <p class="cta-lead">
+        One whole-home package, installed by your licensed local electrician, owned outright with
+        $0/month forever. Tell us your floor plan and we'll quote it.
+      </p>
+      <a href="/contact/" class="btn-primary">Book a walkthrough</a>
+      <p class="cta-sub">
+        Weighing the two models? Read <a href="/homynex-vs-vivint/" class="cta-link">Homynex vs Vivint</a>.
+      </p>
+    </div>
+  </section>
+
+  <Footer />
+</Base>
+
+<style>
+  /* ---------- shared button ---------- */
+  .btn-primary {
+    text-decoration: none; background: var(--green); color: #fff; font-weight: 600; font-size: 16px;
+    padding: 16px 28px; border-radius: 999px; display: inline-block;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+  .btn-primary:hover { transform: translateY(-2px); background: var(--green-2); }
+
+  /* ---------- hero ---------- */
+  .nmf-hero { max-width: 1240px; margin: 0 auto; padding: 64px 32px 8px; }
+  .nmf-hero-inner { max-width: 760px; }
+  .nmf-kicker {
+    font: 600 12px/1 'Hanken Grotesk', sans-serif; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--terra); margin: 0 0 18px;
+  }
+  .nmf-h1 {
+    margin: 0; font-weight: 700; font-size: clamp(38px, 5.6vw, 68px); line-height: 1.0;
+    letter-spacing: -0.03em; color: var(--ink); max-width: 18ch;
+  }
+  .nmf-sub {
+    margin: 22px 0 0; font-size: clamp(17px, 1.6vw, 20px); line-height: 1.55; color: var(--muted);
+    max-width: 56ch;
+  }
+  .nmf-updated {
+    margin: 22px 0 0; font: 600 13px/1 'Hanken Grotesk', sans-serif; letter-spacing: 0.04em;
+    color: var(--muted-2);
+  }
+
+  /* ---------- citable passage ---------- */
+  .cite { max-width: 1240px; margin: 0 auto; padding: 64px 32px 20px; }
+  .cite-inner { max-width: 760px; }
+  .cite-kicker { font: 600 12px/1 'Hanken Grotesk', sans-serif; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green); margin: 0 0 16px; }
+  .cite-text { margin: 0; font-size: clamp(18px, 2vw, 22px); line-height: 1.6; color: var(--ink); letter-spacing: -0.005em; }
+  .cite-text strong { color: var(--ink); font-weight: 700; box-shadow: inset 0 -0.5em 0 rgba(30, 91, 67, 0.12); }
+  .cite-points { list-style: none; margin: 28px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .cite-points li { font-size: 14.5px; line-height: 1.5; color: var(--muted); border-top: 2px solid var(--green); padding-top: 12px; }
+  .cite-points strong { color: var(--ink); }
+
+  /* ---------- comparison table ---------- */
+  .cmp { max-width: 1240px; margin: 0 auto; padding: 64px 32px 20px; }
+  .cmp-inner { max-width: 1000px; }
+  .cmp-kicker { font: 600 12px/1 'Hanken Grotesk', sans-serif; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green); margin: 0 0 14px; }
+  .cmp-h2 { margin: 0; font-weight: 700; font-size: clamp(28px, 3.6vw, 44px); letter-spacing: -0.02em; line-height: 1.04; }
+  .cmp-lead { margin: 14px 0 0; font-size: 16.5px; line-height: 1.55; color: var(--muted); max-width: 56ch; }
+  .cmp-scroll { margin-top: 30px; overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 16px; }
+  .cmp-table {
+    width: 100%; border-collapse: separate; border-spacing: 0; min-width: 640px;
+    background: #fff; border: 1px solid var(--line); border-radius: 16px; overflow: hidden;
+  }
+  .cmp-table thead th {
+    text-align: left; font: 600 14.5px/1.3 'Schibsted Grotesk', sans-serif; color: var(--ink);
+    padding: 18px 22px; background: #efeadf; border-bottom: 1px solid var(--line);
+    vertical-align: bottom;
+  }
+  .cmp-table thead th.cmp-rowhead { width: 26%; }
+  .cmp-table tbody th {
+    text-align: left; font: 600 14.5px/1.4 'Hanken Grotesk', sans-serif; color: var(--ink);
+    padding: 16px 22px; border-bottom: 1px solid var(--line); vertical-align: top; background: #efeadf;
+  }
+  .cmp-table tbody td {
+    font-size: 14.5px; line-height: 1.45; color: var(--muted-2); padding: 16px 22px;
+    border-bottom: 1px solid var(--line); vertical-align: top;
+  }
+  .cmp-table tbody tr:last-child th,
+  .cmp-table tbody tr:last-child td { border-bottom: none; }
+  .cmp-good { color: var(--ink); font-weight: 600; }
+  .cmp-note { margin: 16px 0 0; font-size: 13px; line-height: 1.5; color: var(--muted-2); max-width: 60ch; }
+
+  /* ---------- the 10-year math ---------- */
+  .math { max-width: 1240px; margin: 0 auto; padding: 64px 32px 20px; }
+  .math-card { background: #efeadf; border: 1px solid var(--line-2); border-radius: 20px; padding: clamp(32px, 4vw, 56px); }
+  .math-kicker { font: 600 12px/1 'Hanken Grotesk', sans-serif; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terra); margin: 0 0 14px; }
+  .math-h2 { margin: 0; font-weight: 700; font-size: clamp(26px, 3.2vw, 40px); letter-spacing: -0.02em; line-height: 1.05; max-width: 22ch; }
+  .math-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 32px 0 0; }
+  .math-cell { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 26px 26px 28px; }
+  .math-cell--us { border-color: var(--green); box-shadow: 0 14px 34px rgba(30, 91, 67, 0.08); }
+  .math-tag { font: 600 11px/1 'Hanken Grotesk', sans-serif; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted-2); }
+  .math-tag--us { color: var(--green); }
+  .math-v { font: 700 clamp(30px, 3.6vw, 44px)/1 'Schibsted Grotesk', sans-serif; letter-spacing: -0.02em; color: var(--ink); margin: 14px 0 0; }
+  .math-d { margin: 14px 0 0; font-size: 14.5px; line-height: 1.55; color: var(--muted-2); }
+  .math-d strong { color: var(--ink); }
+  .math-fine { margin: 22px 0 0; font-size: 13px; line-height: 1.55; color: var(--muted); max-width: 64ch; }
+  .math-fine strong { color: var(--ink); }
+
+  /* ---------- faq ---------- */
+  .faq { max-width: 1240px; margin: 0 auto; padding: 64px 32px 20px; }
+  .faq-inner { max-width: 820px; }
+  .faq-kicker { font: 600 12px/1 'Hanken Grotesk', sans-serif; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green); margin: 0 0 14px; }
+  .faq-h2 { margin: 0 0 28px; font-weight: 700; font-size: clamp(28px, 3.6vw, 44px); letter-spacing: -0.02em; line-height: 1.04; }
+  .faq-list { display: grid; gap: 16px; }
+  .faq-item { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 26px 28px; }
+  .faq-item h3 { margin: 0 0 10px; font-weight: 600; font-size: clamp(18px, 2vw, 22px); letter-spacing: -0.01em; color: var(--ink); }
+  .faq-item p { margin: 0; font-size: 15px; line-height: 1.6; color: var(--muted-2); }
+
+  /* ---------- cta ---------- */
+  .cta { max-width: 1240px; margin: 0 auto; padding: 64px 32px 96px; }
+  .cta-card { border-radius: 20px; background: var(--dark); color: var(--on-dark); padding: clamp(48px, 6vw, 84px) 32px; text-align: center; }
+  .cta-kicker { font: 600 12px/1 'Hanken Grotesk', sans-serif; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terra-soft); margin: 0 0 20px; }
+  .cta-card h2 { margin: 0 auto; max-width: 18ch; font-weight: 700; font-size: clamp(30px, 4.2vw, 54px); line-height: 1.03; letter-spacing: -0.025em; color: #fff; }
+  .cta-lead { margin: 20px auto 0; max-width: 50ch; font-size: 17px; line-height: 1.6; color: var(--on-dark-muted); }
+  .cta-card .btn-primary { margin-top: 32px; }
+  .cta-sub { margin: 22px auto 0; font-size: 14.5px; color: var(--on-dark-muted); }
+  .cta-link { color: var(--mint); font-weight: 600; text-decoration: none; border-bottom: 1px solid rgba(127, 183, 158, 0.5); padding-bottom: 2px; }
+  .cta-link:hover { border-bottom-color: var(--mint); }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 880px) {
+    .cite-points { grid-template-columns: 1fr; gap: 0; }
+    .cite-points li { border-top: none; border-left: 2px solid var(--green); padding: 4px 0 4px 14px; margin-bottom: 14px; }
+    .math-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .nmf-hero { padding: 44px 22px 4px; }
+    .cite { padding: 48px 22px 12px; }
+    .cmp { padding: 48px 22px 12px; }
+    .math { padding: 48px 22px 12px; }
+    .faq { padding: 48px 22px 12px; }
+    .cta { padding: 48px 22px 64px; }
+    .cmp-table thead th,
+    .cmp-table tbody th,
+    .cmp-table tbody td { padding: 14px 16px; }
+  }
+</style>

@@ -1,0 +1,65 @@
+---
+interface Props { current?: string; }
+const { current = 'home' } = Astro.props;
+const links = [
+  { label: 'Systems', href: '/systems/', key: 'systems' },
+  { label: 'How it works', href: '/how-it-works/', key: 'how' },
+  { label: 'No monthly fee', href: '/no-monthly-fee/', key: 'nmf' },
+  { label: 'Energy', href: '/energy/', key: 'energy' },
+  { label: 'App', href: '/app/', key: 'app' },
+];
+---
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="/" class="brand" aria-label="Homynex — home">
+      <span class="brand-mark" aria-hidden="true">H</span>
+      <span class="brand-word">HOMYNEX</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      {links.map((l) => (
+        <a href={l.href} class={l.key === current ? 'active' : ''}>{l.label}</a>
+      ))}
+    </nav>
+    <a href="/contact/" class="nav-cta">Book a walkthrough</a>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(244, 241, 234, 0.8);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: 1240px; margin: 0 auto; padding: 14px 32px;
+    display: flex; align-items: center; gap: 32px;
+  }
+  .brand { display: flex; align-items: center; gap: 11px; text-decoration: none; color: var(--ink); }
+  .brand-mark {
+    width: 32px; height: 32px; border-radius: 9px; background: var(--green); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font: 800 15px/1 'Schibsted Grotesk', sans-serif;
+  }
+  .brand-word { font: 700 19px/1 'Schibsted Grotesk', sans-serif; letter-spacing: -0.01em; }
+  .nav-links { margin-left: auto; display: flex; align-items: center; gap: 28px; }
+  .nav-links a {
+    text-decoration: none; font: 500 15px/1 'Hanken Grotesk', sans-serif; color: var(--ink);
+    padding: 6px 0; border-bottom: 2px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  .nav-links a:hover { color: var(--green); }
+  .nav-links a.active { color: var(--green); border-bottom-color: var(--green); }
+  .nav-cta {
+    text-decoration: none; background: var(--ink); color: var(--bg);
+    font: 600 14px/1 'Hanken Grotesk', sans-serif; padding: 13px 20px; border-radius: 999px;
+    white-space: nowrap; transition: transform 0.2s ease, background 0.2s ease;
+  }
+  .nav-cta:hover { transform: translateY(-1px); background: var(--green); }
+  @media (max-width: 860px) {
+    .nav-links { display: none; }
+    .nav-inner { padding: 12px 20px; gap: 14px; }
+    .nav-cta { margin-left: auto; }
+  }
+</style>

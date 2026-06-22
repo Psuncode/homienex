@@ -1,0 +1,271 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const reasons = [
+  'One integrated platform across every system',
+  'A single app for residents to manage their home',
+  'Standardized spec across a whole development',
+  'A one-time purchase with no monthly fee',
+  'Installed by your own licensed local electrician',
+  '2-year parts & labor warranty with local service',
+];
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Homynex',
+  url: 'https://homynex.com',
+  email: 'hello@homynex.com',
+  areaServed: { '@type': 'State', name: 'Utah' },
+  parentOrganization: { '@type': 'Organization', name: 'SmartSync Electric Ltd' },
+};
+---
+
+<Base
+  title="Book an Integration Walkthrough | Homynex for Builders"
+  description="Builders, developers and homeowners — see the full Homynex ecosystem working together and get a per-home quote. One-time purchase, no monthly fee, installed by your local electrician."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+  </Fragment>
+
+  <Nav current="contact" />
+
+  <!-- HEADER -->
+  <section class="head" data-reveal>
+    <p class="head-kicker">For builders &amp; developers</p>
+    <h1 class="head-h1">Book your integration walkthrough</h1>
+    <p class="head-intro">
+      Come and see the full Homynex ecosystem working together — every system, integrated, in one place.
+      Tell us about your project and we'll arrange a guided session, then quote your development by the
+      home: one integrated package, a one-time purchase with no monthly fee.
+    </p>
+  </section>
+
+  <!-- BODY -->
+  <section class="body" data-reveal>
+    <!-- FORM -->
+    <div class="form-col">
+      <form id="walkthrough-form" class="form" novalidate>
+        <div class="field">
+          <label for="full-name">Full name</label>
+          <input id="full-name" name="full-name" type="text" autocomplete="name" placeholder="Jane Builder" required />
+        </div>
+        <div class="field">
+          <label for="company">Company</label>
+          <input id="company" name="company" type="text" autocomplete="organization" placeholder="Acme Developments" />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="jane@acme.com" required />
+        </div>
+        <div class="field">
+          <label for="role">Role</label>
+          <select id="role" name="role" required>
+            <option value="builder">Builder</option>
+            <option value="property-developer">Property developer</option>
+            <option value="architect">Architect or specifier</option>
+            <option value="electrician">Electrician</option>
+            <option value="homeowner">Homeowner</option>
+            <option value="distributor">Distributor</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="field field-wide">
+          <label for="systems">Systems of interest</label>
+          <select id="systems" name="systems" required>
+            <option value="full-ecosystem">The full ecosystem</option>
+            <option value="entry-access">Entry &amp; Access</option>
+            <option value="lighting-power">Lighting &amp; Power</option>
+            <option value="comfort-climate">Comfort &amp; Climate</option>
+            <option value="security-surveillance">Security &amp; Surveillance</option>
+            <option value="energy-backup">Energy &amp; backup</option>
+          </select>
+        </div>
+        <div class="field field-wide">
+          <label for="project">About your project</label>
+          <textarea
+            id="project"
+            name="project"
+            rows="4"
+            placeholder="48-unit development, interested in entry, lighting &amp; energy integration…"
+          ></textarea>
+        </div>
+        <button type="submit" class="form-submit">Request walkthrough</button>
+      </form>
+
+      <div id="walkthrough-success" class="success" role="status" aria-live="polite" hidden>
+        <div class="success-check" aria-hidden="true">✓</div>
+        <h2 class="success-h">Request received</h2>
+        <p class="success-p">
+          A Homynex specialist will be in touch to schedule your integration walkthrough.
+          <em>(Demo, no data was sent.)</em>
+        </p>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="side">
+      <div class="side-dark">
+        <p class="side-kicker side-kicker-mint">Visit the showroom</p>
+        <p class="side-dark-copy">
+          See every Homynex system integrated and live. Bring your plans and we'll walk through
+          specification for your development.
+        </p>
+        <a href="mailto:hello@homynex.com" class="side-email">hello@homynex.com</a>
+      </div>
+
+      <img
+        src="/catalog_images/p51_2.jpg"
+        alt="The Homynex showroom with integrated lighting, entry and climate systems on display"
+        class="side-img"
+        loading="lazy"
+        decoding="async"
+        width="400"
+        height="200"
+      />
+
+      <div class="side-light">
+        <p class="side-kicker">Why developers choose Homynex</p>
+        <ul class="reasons">
+          {reasons.map((r) => (
+            <li class="reason">
+              <span class="reason-dot" aria-hidden="true"></span>
+              <span>{r}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </aside>
+  </section>
+
+  <Footer />
+</Base>
+
+<script>
+  const form = document.getElementById('walkthrough-form') as HTMLFormElement | null;
+  const success = document.getElementById('walkthrough-success');
+  if (form && success) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      form.hidden = true;
+      success.hidden = false;
+      success.focus?.();
+    });
+  }
+</script>
+
+<style>
+  /* ---------- header ---------- */
+  .head { max-width: 1240px; margin: 0 auto; padding: 72px 32px 12px; }
+  .head-kicker {
+    font: 600 12px/1 'Hanken Grotesk', sans-serif; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--terra); margin: 0 0 20px;
+  }
+  .head-h1 {
+    margin: 0; max-width: 18ch; font-weight: 700;
+    font-size: clamp(40px, 6vw, 78px); line-height: 0.98; letter-spacing: -0.03em; color: var(--ink);
+  }
+  .head-intro {
+    margin: 22px 0 0; max-width: 56ch; font-size: clamp(16px, 1.5vw, 18px);
+    line-height: 1.6; color: var(--ink-soft);
+  }
+
+  /* ---------- body layout ---------- */
+  .body {
+    max-width: 1240px; margin: 0 auto; padding: 40px 32px 96px;
+    display: grid; grid-template-columns: 1.3fr 0.85fr; gap: 40px; align-items: start;
+  }
+
+  /* ---------- form ---------- */
+  .form {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 34px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+  }
+  .field { display: flex; flex-direction: column; gap: 8px; }
+  .field-wide { grid-column: 1 / -1; }
+  .field label { font-size: 13px; font-weight: 600; color: var(--ink-soft); }
+  .field input,
+  .field select,
+  .field textarea {
+    border: 1px solid #d8d1c4; background: #f7f4ee; border-radius: 10px; padding: 13px 14px;
+    font-family: 'Hanken Grotesk', sans-serif; font-size: 14.5px; color: var(--ink);
+    transition: border-color 0.2s ease;
+  }
+  .field input::placeholder,
+  .field textarea::placeholder { color: #7a7466; }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus { border-color: var(--green); }
+  .field textarea { resize: vertical; min-height: 96px; }
+  .field select { appearance: none; -webkit-appearance: none; cursor: pointer; }
+
+  .form-submit {
+    grid-column: 1 / -1; border: none; background: var(--green); color: #fff;
+    font-family: 'Hanken Grotesk', sans-serif; font-size: 16px; font-weight: 600;
+    padding: 16px; border-radius: 999px; cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+  .form-submit:hover { transform: translateY(-2px); background: var(--green-2); }
+
+  /* ---------- success ---------- */
+  .success {
+    background: var(--surface); border: 1px solid var(--green); border-radius: 20px;
+    padding: 56px 34px; text-align: center;
+  }
+  .success-check {
+    width: 58px; height: 58px; border-radius: 50%; background: #e7efe8;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; color: var(--green); margin: 0 auto 20px;
+  }
+  .success-h { margin: 0; font-weight: 700; font-size: 26px; letter-spacing: -0.01em; color: var(--ink); }
+  .success-p { margin: 12px auto 0; max-width: 42ch; font-size: 15.5px; line-height: 1.6; color: var(--ink-soft); }
+  .success-p em { color: var(--muted); font-style: italic; }
+
+  /* ---------- sidebar ---------- */
+  .side { display: flex; flex-direction: column; gap: 18px; }
+  .side-kicker {
+    font: 600 11px/1 'Hanken Grotesk', sans-serif; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--muted); margin: 0 0 14px;
+  }
+  .side-kicker-mint { color: var(--mint); letter-spacing: 0.12em; margin-bottom: 16px; }
+
+  .side-dark { background: var(--dark); color: #fff; border-radius: 18px; padding: 28px; }
+  .side-dark-copy { margin: 0 0 18px; font-size: 15px; line-height: 1.6; color: #d6d1c7; }
+  .side-email {
+    color: #fff; font-weight: 600; font-size: 15px; text-decoration: none;
+    border-bottom: 1px solid #3a352e; padding-bottom: 3px;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  .side-email:hover { color: var(--mint); border-bottom-color: var(--mint); }
+
+  .side-img {
+    width: 100%; height: 200px; object-fit: cover; border-radius: 18px; background: #ece7dd;
+  }
+
+  .side-light { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 24px; }
+  .reasons { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+  .reason { display: flex; gap: 10px; align-items: flex-start; }
+  .reason-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--green); margin-top: 7px; flex: none;
+  }
+  .reason span:last-child { font-size: 14px; line-height: 1.45; color: var(--ink-soft); }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 880px) {
+    .body { grid-template-columns: 1fr; gap: 32px; }
+  }
+  @media (max-width: 560px) {
+    .head { padding: 48px 22px 8px; }
+    .body { padding: 28px 22px 64px; }
+    .form { padding: 24px; grid-template-columns: 1fr; }
+    .field-wide { grid-column: auto; }
+    .success { padding: 40px 24px; }
+  }
+</style>

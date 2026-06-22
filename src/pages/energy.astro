@@ -1,0 +1,269 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const stats = [
+  { v: '99.9%', l: 'MPPT efficiency' },
+  { v: '8500+', l: 'cycles @ 80% DoD' },
+  { v: '14.34 kWh', l: 'modular block' },
+  { v: '229 kW', l: 'max parallel' },
+  { v: '200 A', l: 'charging current' },
+];
+
+const pillars = [
+  {
+    img: '/catalog_images/p46_0.jpg',
+    alt: 'Homynex solar storage inverter with MPPT tracking and pure sine-wave output',
+    kicker: 'Solar storage inverter',
+    name: 'Solar Storage Inverter',
+    desc: 'Industrial all-in-one inverter with advanced MPPT and pure sine-wave output — the heart of the home energy system.',
+    specs: [
+      'MPPT up to 99.9% efficiency',
+      'Up to 22A×2 PV input current',
+      'Up to 200A charging current',
+      'Pure sine-wave AC, IP65 rated',
+      'Li-ion BMS communication',
+      'Peak–valley time-slot saving',
+    ],
+  },
+  {
+    img: '/catalog_images/p47_0.jpg',
+    alt: 'Homynex modular LiFePO4 battery storage wall with independent BMS',
+    kicker: 'Modular battery storage',
+    name: 'Modular Battery Storage',
+    desc: 'Safe LiFePO₄ battery with independent BMS and a modular design that scales with the home — plug-and-play install.',
+    specs: [
+      '8500+ cycles at 80% DoD',
+      '14.34 kWh per module',
+      'Up to 229 kW at 16-parallel',
+      'Independent BMS per battery',
+      'Compact, modern design',
+      'CE-EMC · UN38.3 · MSDS certified',
+    ],
+  },
+  {
+    img: '/catalog_images/p48_0.jpg',
+    alt: 'Homynex smart EV charger built for harsh climates, fits all EVs',
+    kicker: 'Home EV charging',
+    name: 'Smart EV Charger',
+    desc: 'Streamlined home charger built for harsh climates and every EV on the road, with safety tested to the highest standards.',
+    specs: [
+      'J1772, fits all EVs',
+      'Wall-mount or floor-stand',
+      'Operates −30°C to 45°C',
+      '20mA CCID leakage protection',
+      'UL listed & anti-weld protected',
+      '2-year warranty · 24/7 support',
+    ],
+  },
+];
+
+const flow = [
+  { n: '01', t: 'Generate', d: 'Rooftop solar feeds the inverter with high-efficiency MPPT tracking.' },
+  { n: '02', t: 'Convert', d: 'The inverter delivers clean, pure sine-wave AC power to the home.' },
+  { n: '03', t: 'Store', d: 'Surplus energy charges the modular LiFePO₄ battery wall.' },
+  { n: '04', t: 'Use', d: 'Power the home and EV, with peak-valley savings, all in the app.' },
+];
+
+const certs = ['CE-EMC', 'UN38.3', 'MSDS', 'UL Listed', 'IP65'];
+---
+
+<Base
+  title="Home Energy — Solar, Storage & EV Charging | Homynex"
+  description="Generate, store and use your own clean energy — solar inverters, modular LiFePO₄ battery storage and EV charging, all in the Homynex app. One-time purchase, no monthly fee."
+>
+  <Nav current="energy" />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-card">
+      <div class="hero-text">
+        <p class="hero-kicker">Energy &amp; sustainability</p>
+        <h1 class="hero-h1">Powered for independence</h1>
+        <p class="hero-sub">
+          Generate, store and use your own clean energy — solar inverters, modular battery storage
+          and EV charging, all managed in the Homynex app.
+        </p>
+      </div>
+      <img
+        src="/catalog_images/p47_0.jpg"
+        alt="Home battery storage wall paired with rooftop solar"
+        class="hero-img"
+        fetchpriority="high"
+        decoding="async"
+        width="660"
+        height="580"
+      />
+    </div>
+  </section>
+
+  <!-- STAT BAND -->
+  <section class="statband" data-reveal>
+    <div class="statband-inner">
+      {stats.map((s) => (
+        <div class="stat">
+          <div class="stat-v">{s.v}</div>
+          <div class="stat-l">{s.l}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- PILLARS -->
+  <section class="pillars" data-reveal>
+    <h2 class="pillars-h2">The energy stack</h2>
+    <div class="pillar-rows">
+      {pillars.map((p) => (
+        <article class="pillar">
+          <img src={p.img} alt={p.alt} class="pillar-img" loading="lazy" decoding="async" width="420" height="300" />
+          <div class="pillar-body">
+            <p class="pillar-kicker">{p.kicker}</p>
+            <h3 class="pillar-name">{p.name}</h3>
+            <p class="pillar-desc">{p.desc}</p>
+            <ul class="pillar-specs">
+              {p.specs.map((sp) => (
+                <li class="spec"><span class="spec-dot" aria-hidden="true"></span><span class="spec-txt">{sp}</span></li>
+              ))}
+            </ul>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- FLOW -->
+  <section class="flow" data-reveal>
+    <div class="flow-inner">
+      <p class="flow-kicker">How it flows</p>
+      <h2 class="flow-h2">From sunlight to every socket</h2>
+      <div class="flow-cards">
+        {flow.map((f) => (
+          <div class="flow-card">
+            <div class="flow-n">{f.n}</div>
+            <div class="flow-t">{f.t}</div>
+            <div class="flow-d">{f.d}</div>
+          </div>
+        ))}
+      </div>
+      <div class="cert-pills">
+        {certs.map((c) => (<span class="cert-pill">{c}</span>))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" data-reveal>
+    <div class="cta-inner">
+      <h2 class="cta-h2">Specify clean energy across your development</h2>
+      <p class="cta-lead">Solar, storage and EV charging from one supplier — a one-time purchase with no monthly fee, quoted per home.</p>
+      <a href="/contact/" class="btn-primary">Talk to our energy team</a>
+    </div>
+  </section>
+
+  <Footer />
+</Base>
+
+<style>
+  /* ---------- shared button ---------- */
+  .btn-primary {
+    text-decoration: none; background: var(--green); color: #fff; font-weight: 600; font-size: 16px;
+    padding: 16px 28px; border-radius: 999px; display: inline-block;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+  .btn-primary:hover { transform: translateY(-2px); background: var(--green-2); }
+
+  /* ---------- hero ---------- */
+  .hero { max-width: 1320px; margin: 0 auto; padding: 28px 32px 0; }
+  .hero-card {
+    border-radius: 20px; overflow: hidden; background: var(--green); color: #fff;
+    display: grid; grid-template-columns: 1.05fr 0.95fr; min-height: clamp(440px, 56vh, 580px);
+  }
+  .hero-text { padding: clamp(28px, 5vw, 60px); display: flex; flex-direction: column; justify-content: center; }
+  .hero-kicker {
+    font: 600 13px/1 'Hanken Grotesk', sans-serif; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--mint); margin: 0 0 16px;
+  }
+  .hero-h1 {
+    margin: 0; color: #fff; font-weight: 700; font-size: clamp(40px, 6.4vw, 84px);
+    line-height: 0.98; letter-spacing: -0.03em; max-width: 15ch;
+  }
+  .hero-sub { color: #e4efe9; font-size: clamp(16px, 1.4vw, 19px); line-height: 1.5; max-width: 50ch; margin: 20px 0 0; }
+  .hero-img { width: 100%; height: 100%; min-height: 320px; object-fit: cover; }
+
+  /* ---------- stat band ---------- */
+  .statband { max-width: 1240px; margin: 0 auto; padding: 64px 32px 32px; }
+  .statband-inner { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; }
+  .stat { border-top: 2px solid var(--green); padding-top: 18px; }
+  .stat-v { font: 700 clamp(26px, 2.6vw, 38px)/1 'Schibsted Grotesk', sans-serif; letter-spacing: -0.02em; color: var(--ink); }
+  .stat-l { font-size: 13px; color: var(--muted); margin-top: 9px; font-weight: 500; }
+
+  /* ---------- pillars ---------- */
+  .pillars { max-width: 1240px; margin: 0 auto; padding: 48px 32px; }
+  .pillars-h2 { margin: 0 0 36px; font-weight: 700; font-size: clamp(28px, 3.6vw, 46px); letter-spacing: -0.02em; }
+  .pillar-rows { display: flex; flex-direction: column; gap: 20px; }
+  .pillar {
+    display: grid; grid-template-columns: 420px 1fr; gap: 36px; align-items: center;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 18px; overflow: hidden;
+  }
+  .pillar-img { width: 100%; height: 300px; object-fit: cover; background: #ece7dd; }
+  .pillar-body { padding: 8px 36px 8px 0; }
+  .pillar-kicker {
+    font: 600 11px/1 'Hanken Grotesk', sans-serif; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--terra); margin: 0 0 12px;
+  }
+  .pillar-name { margin: 0 0 10px; font-weight: 700; font-size: 27px; letter-spacing: -0.01em; }
+  .pillar-desc { margin: 0 0 18px; font-size: 15px; line-height: 1.55; color: var(--muted); max-width: 48ch; }
+  .pillar-specs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 13px 22px; }
+  .spec { display: flex; gap: 9px; align-items: flex-start; }
+  .spec-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--green); margin-top: 7px; flex: none; }
+  .spec-txt { font-size: 13.5px; line-height: 1.4; color: var(--ink-soft); }
+
+  /* ---------- flow ---------- */
+  .flow { background: var(--dark); color: #fff; }
+  .flow-inner { max-width: 1240px; margin: 0 auto; padding: 84px 32px; }
+  .flow-kicker {
+    font: 600 12px/1 'Hanken Grotesk', sans-serif; text-transform: uppercase; letter-spacing: 0.14em;
+    color: var(--mint); margin: 0 0 16px;
+  }
+  .flow-h2 { margin: 0 0 40px; font-weight: 700; font-size: clamp(28px, 3.6vw, 46px); letter-spacing: -0.02em; color: #fff; }
+  .flow-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .flow-card { background: var(--dark-2); border: 1px solid var(--dark-line); border-radius: 16px; padding: 26px; }
+  .flow-n { font: 700 15px/1 'Schibsted Grotesk', sans-serif; color: var(--mint); }
+  .flow-t { font: 600 20px/1.1 'Schibsted Grotesk', sans-serif; margin: 14px 0 8px; }
+  .flow-d { font-size: 13.5px; line-height: 1.5; color: var(--on-dark-muted); }
+  .cert-pills { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 10px; }
+  .cert-pill {
+    font: 600 12px/1 'Hanken Grotesk', sans-serif; letter-spacing: 0.04em; color: #e4dfd5;
+    border: 1px solid var(--dark-line); padding: 9px 14px; border-radius: 999px;
+  }
+
+  /* ---------- cta ---------- */
+  .cta { max-width: 1240px; margin: 0 auto; padding: 88px 32px; }
+  .cta-inner { text-align: center; }
+  .cta-h2 { margin: 0 auto; max-width: 18ch; font-weight: 700; font-size: clamp(30px, 4.4vw, 54px); line-height: 1.03; letter-spacing: -0.025em; }
+  .cta-lead { margin: 20px auto 0; max-width: 50ch; font-size: 17px; line-height: 1.6; color: var(--muted); }
+  .cta .btn-primary { margin-top: 30px; }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 880px) {
+    .hero { padding: 16px 16px 0; }
+    .hero-card { grid-template-columns: 1fr; }
+    .hero-img { min-height: 260px; order: -1; }
+    .statband-inner { grid-template-columns: repeat(3, 1fr); gap: 28px 20px; }
+    .pillar { grid-template-columns: 1fr; gap: 0; }
+    .pillar-img { height: 240px; }
+    .pillar-body { padding: 26px 28px 30px; }
+    .flow-cards { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .hero { padding: 14px 14px 0; }
+    .statband { padding: 48px 22px 24px; }
+    .statband-inner { grid-template-columns: 1fr; gap: 24px; }
+    .pillars { padding: 40px 22px; }
+    .pillar-specs { grid-template-columns: 1fr; }
+    .flow-inner { padding: 60px 22px; }
+    .flow-cards { grid-template-columns: 1fr; }
+    .cta { padding: 64px 22px; }
+  }
+</style>

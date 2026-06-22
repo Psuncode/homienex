@@ -1,0 +1,242 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const groups = [
+  {
+    kicker: 'No monthly fee & ownership',
+    qas: [
+      {
+        q: 'Does Homynex charge a monthly fee?',
+        a: 'No. Homynex is a one-time purchase — there is no subscription, no contract, and no recurring monitoring bill. You buy the system once and own it outright.',
+      },
+      {
+        q: 'Do I own the system or lease it?',
+        a: 'You own it. Homynex is bought once and owned outright by the homeowner — it is not leased, financed as a service, or tied to a provider contract. The hardware in your home belongs to you.',
+      },
+      {
+        q: 'Are there any required add-on services?',
+        a: 'No. There are no required add-on services, monitoring plans, or paid tiers to unlock the system. Once installed, the whole-home package works without any mandatory ongoing payment.',
+      },
+    ],
+  },
+  {
+    kicker: 'Install & electrician',
+    qas: [
+      {
+        q: 'Who installs Homynex?',
+        a: 'A licensed local electrician installs Homynex, typically during construction or renovation. There is no proprietary technician and no installer lock-in — your own electrician fits the whole-home system as part of the build.',
+      },
+      {
+        q: 'Can it be added during a renovation?',
+        a: 'Yes. Homynex can be installed during a renovation or upgrade, not only in new construction. Your electrician integrates the systems while the walls and wiring are already open during the project.',
+      },
+      {
+        q: 'Do I need special technicians for service?',
+        a: 'No. Because a licensed local electrician installs and services Homynex, you are not dependent on a single proprietary technician or a service contract. Any qualified local electrician can support the system.',
+      },
+    ],
+  },
+  {
+    kicker: 'Pricing & packages',
+    qas: [
+      {
+        q: 'How much does Homynex cost?',
+        a: 'Homynex is quoted as one whole-home package per home — not a per-device price list — so it fits your build or upgrade budget. There is no monthly fee. The exact figure depends on the home and which systems are included, so we provide a per-home quote.',
+      },
+      {
+        q: "Why don't you list device prices?",
+        a: 'Because the value is the integrated system, not the individual parts. Quoting device by device would misrepresent what Homynex is. We price one whole-home package per home so the quote reflects the systems that home actually needs.',
+      },
+      {
+        q: 'What are the package tiers?',
+        a: 'There are three scopes — Essentials, Enhanced, and Whole-home — that differ by which systems are included. Essentials covers the core, Enhanced adds more systems, and Whole-home integrates the full set across the house.',
+      },
+    ],
+  },
+  {
+    kicker: 'Builders & channel',
+    qas: [
+      {
+        q: 'Can builders offer Homynex as a spec-home upgrade?',
+        a: 'Yes. Builders can offer Homynex as a spec-home upgrade using standardized packages, channel pricing, and zero-inventory onboarding — so the smart-home option is easy to specify and quote across homes.',
+      },
+      {
+        q: 'Do you support production builders?',
+        a: 'Yes. Standardized packages and channel pricing are built for production builders, so the same integrated ecosystem can be specified repeatably across every home in a development without holding inventory.',
+      },
+    ],
+  },
+  {
+    kicker: 'Systems & app',
+    qas: [
+      {
+        q: 'What systems does Homynex include?',
+        a: 'Homynex includes eleven integrated systems — entry, lighting, climate, security, audio, energy and more — all controlled from one app.',
+      },
+      {
+        q: 'Does it work with Alexa?',
+        a: 'Yes. Homynex works with Amazon Alexa.',
+      },
+      {
+        q: 'Where is Homynex available?',
+        a: "Homynex is available in the US, starting in Utah's Wasatch Front — Lehi, Provo, Salt Lake City and St. George.",
+      },
+    ],
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: groups.flatMap((g) =>
+    g.qas.map((qa) => ({
+      '@type': 'Question',
+      name: qa.q,
+      acceptedAnswer: { '@type': 'Answer', text: qa.a },
+    }))
+  ),
+};
+---
+
+<Base
+  title="Homynex FAQ — No Monthly Fee, Install, Pricing & Builders"
+  description="Answers about Homynex: does it have a monthly fee, who installs it, how pricing works, how it compares to Vivint, and how builders offer it. Whole-home smart, one-time purchase."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <Nav current="faq" />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="hero-kicker">FAQ</p>
+      <h1 class="hero-h1">Questions, answered.</h1>
+      <p class="hero-sub">
+        Straight answers on monthly fees, who installs Homynex, how pricing works, and how builders
+        offer it — no jargon, no fine print.
+      </p>
+    </div>
+  </section>
+
+  <!-- Q&A GROUPS -->
+  {groups.map((g) => (
+    <section class="qa" data-reveal>
+      <div class="qa-inner">
+        <h2 class="qa-h2">
+          <span class="qa-kicker">{g.kicker}</span>
+        </h2>
+        <div class="qa-list">
+          {g.qas.map((qa) => (
+            <div class="qa-item">
+              <h3 class="qa-q">{qa.q}</h3>
+              <p class="qa-a">{qa.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- CTA BAND -->
+  <section class="cta" data-reveal>
+    <div class="cta-card">
+      <p class="cta-kicker">Still deciding?</p>
+      <h2>One supplier, one app, no monthly fee.</h2>
+      <p class="cta-lead">
+        Get a per-home quote for your build or upgrade — or dig into the details first. See exactly
+        <a href="/how-it-works/" class="cta-link">how it works</a> and how Homynex stacks up against a
+        subscription system in <a href="/homynex-vs-vivint/" class="cta-link">Homynex vs Vivint</a>.
+      </p>
+      <a href="/contact/" class="btn-primary">Get a per-home quote</a>
+    </div>
+  </section>
+
+  <Footer />
+</Base>
+
+<style>
+  /* ---------- shared button ---------- */
+  .btn-primary {
+    text-decoration: none; background: var(--green); color: #fff; font-weight: 600; font-size: 16px;
+    padding: 16px 28px; border-radius: 999px; display: inline-block;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+  .btn-primary:hover { transform: translateY(-2px); background: var(--green-2); }
+
+  /* ---------- hero ---------- */
+  .hero { max-width: 1240px; margin: 0 auto; padding: 88px 32px 40px; }
+  .hero-inner { max-width: 820px; }
+  .hero-kicker {
+    font: 600 12px/1 'Hanken Grotesk', sans-serif; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--terra); margin: 0 0 16px;
+  }
+  .hero-h1 {
+    margin: 0; font-weight: 700; font-size: clamp(40px, 6vw, 72px); line-height: 1.0;
+    letter-spacing: -0.03em; color: var(--ink);
+  }
+  .hero-sub {
+    margin: 22px 0 0; font-size: clamp(17px, 2vw, 21px); line-height: 1.55; color: var(--muted);
+    max-width: 56ch;
+  }
+
+  /* ---------- Q&A groups ---------- */
+  .qa { max-width: 1240px; margin: 0 auto; padding: 28px 32px; }
+  .qa-inner { max-width: 820px; }
+  .qa-h2 { margin: 0 0 6px; }
+  .qa-kicker {
+    display: inline-block; font: 600 12px/1 'Hanken Grotesk', sans-serif; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--terra); font-weight: 600;
+  }
+  .qa-list {
+    margin-top: 18px; background: var(--surface); border: 1px solid var(--line);
+    border-radius: 16px; overflow: hidden;
+  }
+  .qa-item { padding: 26px 28px; border-top: 1px solid var(--line); }
+  .qa-item:first-child { border-top: none; }
+  .qa-q {
+    margin: 0; font-weight: 600; font-size: clamp(18px, 2.1vw, 22px); letter-spacing: -0.01em;
+    line-height: 1.2; color: var(--ink);
+  }
+  .qa-a {
+    margin: 12px 0 0; font-size: clamp(15px, 1.7vw, 17px); line-height: 1.6; color: var(--muted-2);
+  }
+
+  /* ---------- cta ---------- */
+  .cta { max-width: 1240px; margin: 0 auto; padding: 60px 32px 96px; }
+  .cta-card {
+    border-radius: 20px; background: var(--dark); color: var(--on-dark);
+    padding: clamp(48px, 6vw, 84px) 32px; text-align: center;
+  }
+  .cta-kicker {
+    font: 600 12px/1 'Hanken Grotesk', sans-serif; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--terra-soft); margin: 0 0 20px;
+  }
+  .cta-card h2 {
+    margin: 0 auto; max-width: 18ch; font-weight: 700; font-size: clamp(30px, 4.4vw, 54px);
+    line-height: 1.04; letter-spacing: -0.025em; color: #fff;
+  }
+  .cta-lead {
+    margin: 20px auto 0; max-width: 52ch; font-size: 17px; line-height: 1.6; color: var(--on-dark-muted);
+  }
+  .cta-link { color: var(--mint); text-decoration: none; border-bottom: 1px solid var(--mint); padding-bottom: 1px; }
+  .cta-link:hover { color: #fff; border-bottom-color: #fff; }
+  .cta-card .btn-primary { margin-top: 32px; }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 880px) {
+    .hero { padding: 64px 24px 32px; }
+    .qa { padding: 24px 24px; }
+    .cta { padding: 48px 24px 72px; }
+  }
+  @media (max-width: 560px) {
+    .hero { padding: 48px 20px 24px; }
+    .qa { padding: 20px 20px; }
+    .qa-item { padding: 22px 20px; }
+    .cta { padding: 40px 16px 64px; }
+    .cta-card { padding: 44px 22px; }
+  }
+</style>

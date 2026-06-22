@@ -1,0 +1,331 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const highlights = [
+  { t: '8 ways', d: 'to unlock, fingerprint to app' },
+  { t: '1080P', d: 'HD video at the door' },
+  { t: 'IP65', d: 'weatherproof, built to last' },
+  { t: 'Whole-home', d: 'hub control from one screen' },
+];
+
+const groups = [
+  {
+    img: '/catalog_images/p6_0.jpg',
+    kicker: 'Smart hubs & panels',
+    name: 'Control Panels',
+    desc: 'The brain of the connected home — a single screen that sees, calls and controls every device.',
+    specs: [
+      'Touch, button, voice & app control',
+      'Built-in Zigbee / Bluetooth gateway',
+      'HD camera for video calls',
+      'One-touch doorbell intercom',
+      'Whole-house device control',
+      'Low-power Linux system',
+    ],
+    variants: ['10" TPA10-M2U', '5" TPP05-Z'],
+  },
+  {
+    img: '/catalog_images/p9_0.jpg',
+    kicker: 'Video doorbells',
+    name: 'Video Doorbells',
+    desc: 'See and speak to anyone at the door, with smart detection that cuts false alerts and weatherproofing for any climate.',
+    specs: [
+      '1080P HD with night vision',
+      'Two-way audio, echo cancellation',
+      'PIR + human detection',
+      'Customizable alert zones',
+      'Remote unlock & auto recording',
+      'IP65 weatherproof',
+    ],
+    variants: ['SDB', 'db-kw02'],
+  },
+  {
+    img: '/catalog_images/p10_0.jpg',
+    kicker: 'Smart locks',
+    name: 'Smart Locks',
+    desc: 'Keyless entry your way — fingerprint, code, card, key, Bluetooth or app, with dynamic and temporary passwords for guests.',
+    specs: [
+      'Fingerprint, PIN, IC card & key',
+      'Bluetooth & app unlock',
+      'Dynamic & temporary passwords',
+      'Electronic auto-lock',
+      'Always-open & silent modes',
+      'Retrofit add-on option',
+    ],
+    variants: ['X3', 'X2', 'C88', 'C89', 'T1', 'Add-on retrofit'],
+  },
+  {
+    img: '/catalog_images/p13_0.jpg',
+    kicker: 'Garage & gate',
+    name: 'Garage & Gate Control',
+    desc: 'Drive-in automated — open and close from anywhere, with scheduling, safety alerts and shared family access.',
+    specs: [
+      'App remote open / close',
+      'Alexa & Google voice control',
+      'Scheduled operation',
+      'Real-time safety alerts',
+      'Open / close history log',
+      'Family access sharing',
+    ],
+    variants: ['Wi-Fi Garage Controller'],
+  },
+];
+
+const unlocks = [
+  { n: '01', t: 'Fingerprint' },
+  { n: '02', t: 'PIN code' },
+  { n: '03', t: 'IC card' },
+  { n: '04', t: 'Physical key' },
+  { n: '05', t: 'Bluetooth' },
+  { n: '06', t: 'App unlock' },
+  { n: '07', t: 'Dynamic password' },
+  { n: '08', t: 'Remote unlock' },
+];
+---
+
+<Base
+  title="Entry System — Smart Locks, Doorbells & Hubs | Homynex"
+  description="Homynex Entry System: smart locks, video doorbells and control hubs for secure, keyless access. Part of the whole-home system — a one-time purchase with no monthly fee."
+>
+  <Nav current="systems" />
+
+  <!-- BREADCRUMB -->
+  <nav class="crumb" aria-label="Breadcrumb">
+    <a href="/systems/">Systems</a>
+    <span class="crumb-sep" aria-hidden="true">/</span>
+    <span class="crumb-here">Entry System</span>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <div class="hero-eyebrow">
+        <span class="hero-num">01</span>
+        <span class="hero-kicker">Access &amp; Security</span>
+      </div>
+      <h1 class="hero-h1">Entry System</h1>
+      <p class="hero-intro">
+        Smart locks, video doorbells and control hubs that make access secure, keyless and
+        effortless — the front door of the connected home. Quoted per home as part of the
+        whole-home system, with no monthly fee.
+      </p>
+      <div class="hero-cta-row">
+        <a href="/contact/" class="btn-primary">Request a quote</a>
+        <a href="/systems/" class="btn-ghost">All systems</a>
+      </div>
+    </div>
+    <img
+      src="/catalog_images/p12_2.jpg"
+      alt="Smart lock and video doorbell at a front door"
+      class="hero-img"
+      fetchpriority="high"
+      decoding="async"
+      width="600"
+      height="480"
+    />
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section class="highlights" data-reveal>
+    <div class="highlights-inner">
+      {highlights.map((h) => (
+        <div class="highlight">
+          <div class="highlight-v">{h.t}</div>
+          <div class="highlight-d">{h.d}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- PRODUCT GROUPS -->
+  <section class="groups" data-reveal>
+    {groups.map((g, i) => (
+      <div class={`group ${i % 2 === 1 ? 'group-reverse' : ''}`}>
+        <img
+          src={g.img}
+          alt={g.name}
+          class="group-img"
+          loading="lazy"
+          decoding="async"
+          width="440"
+          height="340"
+        />
+        <div class="group-body">
+          <div class="group-kicker">{g.kicker}</div>
+          <h2 class="group-name">{g.name}</h2>
+          <p class="group-desc">{g.desc}</p>
+          <ul class="group-specs">
+            {g.specs.map((sp) => (
+              <li class="group-spec"><span class="spec-dot" aria-hidden="true"></span><span>{sp}</span></li>
+            ))}
+          </ul>
+          <div class="group-variants">
+            {g.variants.map((v) => (<span class="pill">{v}</span>))}
+          </div>
+        </div>
+      </div>
+    ))}
+  </section>
+
+  <!-- UNLOCK METHODS -->
+  <section class="unlock" data-reveal>
+    <div class="unlock-inner">
+      <p class="unlock-kicker">Unlock your way</p>
+      <h2 class="unlock-h2">Eight ways through the front door</h2>
+      <div class="unlock-grid">
+        {unlocks.map((u) => (
+          <div class="unlock-card">
+            <div class="unlock-n">{u.n}</div>
+            <div class="unlock-t">{u.t}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" data-reveal>
+    <div class="cta-inner">
+      <h2 class="cta-h2">Specify the Entry System across your development</h2>
+      <p class="cta-lead">One supplier, one app, no monthly fee — quoted as one whole-home package per floor plan.</p>
+      <a href="/contact/" class="btn-primary">Book a walkthrough</a>
+    </div>
+  </section>
+
+  <Footer />
+</Base>
+
+<style>
+  /* ---------- shared buttons ---------- */
+  .btn-primary {
+    text-decoration: none; background: var(--green); color: #fff; font-weight: 600; font-size: 16px;
+    padding: 16px 28px; border-radius: 999px; display: inline-block;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+  .btn-primary:hover { transform: translateY(-2px); background: var(--green-2); }
+  .btn-ghost {
+    text-decoration: none; background: transparent; color: var(--ink); font-weight: 600; font-size: 16px;
+    padding: 16px 28px; border-radius: 999px; border: 1px solid var(--line); display: inline-block;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+  .btn-ghost:hover { border-color: var(--green); color: var(--green); }
+
+  /* ---------- breadcrumb ---------- */
+  .crumb { max-width: 1240px; margin: 0 auto; padding: 24px 32px 0; font-size: 13.5px; color: var(--muted); }
+  .crumb a { color: var(--muted); text-decoration: none; }
+  .crumb a:hover { color: var(--green); }
+  .crumb-sep { color: #c9c2b4; margin: 0 4px; }
+  .crumb-here { color: var(--ink-soft); }
+
+  /* ---------- hero ---------- */
+  .hero {
+    max-width: 1240px; margin: 0 auto; padding: 28px 32px 40px;
+    display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px; align-items: center;
+  }
+  .hero-eyebrow { display: flex; align-items: baseline; gap: 12px; margin-bottom: 18px; }
+  .hero-num { font: 700 18px/1 'Schibsted Grotesk', sans-serif; color: var(--terra); }
+  .hero-kicker {
+    font: 600 12px/1 'Hanken Grotesk', sans-serif; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--green);
+  }
+  .hero-h1 {
+    margin: 0; font-weight: 700; font-size: clamp(44px, 6vw, 82px);
+    line-height: 0.98; letter-spacing: -0.03em;
+  }
+  .hero-intro { margin: 22px 0 0; max-width: 46ch; font-size: 18px; line-height: 1.6; color: var(--ink-soft); }
+  .hero-cta-row { display: flex; gap: 14px; margin-top: 30px; flex-wrap: wrap; }
+  .hero-img { width: 100%; height: 480px; object-fit: cover; border-radius: 20px; }
+
+  /* ---------- highlights ---------- */
+  .highlights { max-width: 1240px; margin: 0 auto; padding: 32px 32px 24px; }
+  .highlights-inner {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
+    border-top: 1px solid var(--line); padding-top: 36px;
+  }
+  .highlight-v {
+    font: 700 clamp(24px, 2.4vw, 34px)/1.05 'Schibsted Grotesk', sans-serif; letter-spacing: -0.01em; color: var(--ink);
+  }
+  .highlight-d { font-size: 14px; color: var(--muted-2); margin-top: 8px; line-height: 1.45; }
+
+  /* ---------- product groups ---------- */
+  .groups {
+    max-width: 1240px; margin: 0 auto; padding: 48px 32px;
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .group {
+    display: flex; gap: 0; align-items: stretch; background: var(--surface);
+    border: 1px solid var(--line); border-radius: 18px; overflow: hidden;
+  }
+  .group-reverse { flex-direction: row-reverse; }
+  .group-img { flex: 0 0 440px; width: 440px; height: auto; object-fit: cover; align-self: stretch; background: #ece7dd; }
+  .group-body { flex: 1; padding: 36px; }
+  .group-kicker {
+    font: 600 11px/1 'Hanken Grotesk', sans-serif; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--terra); margin-bottom: 12px;
+  }
+  .group-name { margin: 0 0 10px; font-weight: 700; font-size: 26px; letter-spacing: -0.01em; }
+  .group-desc { margin: 0 0 18px; font-size: 15px; line-height: 1.55; color: var(--ink-soft); max-width: 50ch; }
+  .group-specs {
+    list-style: none; margin: 0 0 18px; padding: 0;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 13px 22px;
+  }
+  .group-spec { display: flex; gap: 9px; align-items: flex-start; }
+  .spec-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--green); margin-top: 7px; flex: none; }
+  .group-spec span:last-child { font-size: 13.5px; line-height: 1.4; color: var(--ink-soft); }
+  .group-variants { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pill {
+    font: 500 12.5px/1 'Hanken Grotesk', sans-serif; color: var(--ink-soft);
+    background: #f0ebe1; border: 1px solid var(--line); padding: 7px 12px; border-radius: 999px;
+  }
+
+  /* ---------- unlock methods ---------- */
+  .unlock { background: var(--dark); color: #fff; }
+  .unlock-inner { max-width: 1240px; margin: 0 auto; padding: 80px 32px; }
+  .unlock-kicker {
+    font: 600 12px/1 'Hanken Grotesk', sans-serif; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--mint); margin: 0 0 16px;
+  }
+  .unlock-h2 {
+    margin: 0 0 36px; font-weight: 700; font-size: clamp(28px, 3.6vw, 46px);
+    letter-spacing: -0.02em; max-width: 20ch;
+  }
+  .unlock-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .unlock-card { background: var(--dark-2); border: 1px solid var(--dark-line); border-radius: 14px; padding: 22px; }
+  .unlock-n { font: 700 15px/1 'Schibsted Grotesk', sans-serif; color: var(--terra); }
+  .unlock-t { font: 600 17px/1.2 'Schibsted Grotesk', sans-serif; margin-top: 12px; }
+
+  /* ---------- cta ---------- */
+  .cta { max-width: 1240px; margin: 0 auto; padding: 88px 32px; }
+  .cta-inner { text-align: center; }
+  .cta-h2 {
+    margin: 0 auto; max-width: 18ch; font-weight: 700; font-size: clamp(30px, 4.4vw, 54px);
+    line-height: 1.03; letter-spacing: -0.025em;
+  }
+  .cta-lead { margin: 18px auto 0; max-width: 48ch; font-size: 17px; line-height: 1.6; color: var(--muted); }
+  .cta .btn-primary { margin-top: 30px; }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 880px) {
+    .hero { grid-template-columns: 1fr; gap: 28px; }
+    .hero-img { order: -1; height: 320px; }
+    .highlights-inner { grid-template-columns: 1fr 1fr; gap: 28px 20px; }
+    .group, .group-reverse { flex-direction: column; }
+    .group-img { flex: 0 0 auto; width: 100%; height: 260px; }
+    .group-specs { grid-template-columns: 1fr 1fr; }
+    .unlock-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .crumb { padding: 18px 22px 0; }
+    .hero { padding: 20px 22px 32px; }
+    .highlights { padding: 24px 22px 16px; }
+    .highlights-inner { grid-template-columns: 1fr; gap: 22px; }
+    .groups { padding: 36px 22px; }
+    .group-body { padding: 26px 24px; }
+    .group-specs { grid-template-columns: 1fr; }
+    .unlock-inner { padding: 60px 22px; }
+    .unlock-grid { grid-template-columns: 1fr; }
+    .cta { padding: 64px 22px; }
+  }
+</style>

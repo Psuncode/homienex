@@ -1,0 +1,126 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+}
+const {
+  title = 'Homynex | Whole-Home Smart System, No Monthly Fee',
+  description =
+    'Homynex is a whole-home smart system — eleven integrated systems in one app, installed by your local electrician. A one-time purchase with no monthly fee, for Utah builders and homeowners.',
+  canonical,
+} = Astro.props;
+const canonicalURL = canonical ?? new URL(Astro.url.pathname, Astro.site).href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="theme-color" content="#1E5B43" />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Homynex" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={new URL('/catalog_images/p51_1.jpg', Astro.site).href} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Schibsted+Grotesk:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <slot name="head" />
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      // Progressive scroll-reveal. Content is fully visible by default (so a
+      // non-JS or reduced-motion visitor sees everything); we only hide-then-
+      // animate when JS runs and the user hasn't requested reduced motion.
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reduce && 'IntersectionObserver' in window) {
+        const els = document.querySelectorAll('[data-reveal]');
+        els.forEach((el) => {
+          const e = el as HTMLElement;
+          e.style.opacity = '0';
+          e.style.transform = 'translateY(26px)';
+          e.style.transition =
+            'opacity .7s cubic-bezier(.2,.6,.2,1), transform .7s cubic-bezier(.2,.6,.2,1)';
+        });
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const e = entry.target as HTMLElement;
+                e.style.opacity = '1';
+                e.style.transform = 'none';
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.08 }
+        );
+        els.forEach((el) => io.observe(el));
+      }
+    </script>
+
+    <style is:global>
+      * { box-sizing: border-box; }
+      :root {
+        --bg: #f4f1ea;
+        --surface: #ffffff;
+        --ink: #161412;
+        --ink-soft: #3c372f;
+        --green: #1e5b43;
+        --green-2: #2f7e5c;
+        --terra: #a8744a;
+        --terra-soft: #c9925f;
+        --line: #e2dcd0;
+        --line-2: #e5dfd2;
+        --muted: #5e574b;      /* AA on cream */
+        --muted-2: #6b6457;    /* AA on white  */
+        --dark: #161412;
+        --dark-2: #1f1b16;
+        --dark-line: #2e2922;
+        --on-dark: #f4f1ea;
+        --on-dark-muted: #c9c3b6; /* AA on dark */
+        --mint: #7fb79e;
+      }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: inherit; }
+      h1, h2, h3 { font-family: 'Schibsted Grotesk', 'Hanken Grotesk', sans-serif; }
+      img { display: block; max-width: 100%; }
+      :focus-visible { outline: 3px solid var(--green); outline-offset: 3px; border-radius: 6px; }
+      ::selection { background: var(--green); color: #fff; }
+      ::-webkit-scrollbar { height: 9px; width: 9px; }
+      ::-webkit-scrollbar-thumb { background: #d8d1c4; border-radius: 9px; }
+      @keyframes wfpulse {
+        0% { box-shadow: 0 0 0 0 rgba(30, 91, 67, 0.45); }
+        70% { box-shadow: 0 0 0 15px rgba(30, 91, 67, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(30, 91, 67, 0); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+        [data-reveal] { opacity: 1 !important; transform: none !important; }
+      }
+    </style>
+  </body>
+</html>

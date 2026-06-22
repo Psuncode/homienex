@@ -1,0 +1,257 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const beliefs = [
+  {
+    n: '01',
+    t: "Own it, don't rent it",
+    d: 'A smart home should be a thing you own, not a bill you pay forever. Homynex is a one-time purchase — no contract, no subscription, no monthly monitoring fee.',
+  },
+  {
+    n: '02',
+    t: 'Installed by your electrician',
+    d: 'Your own licensed local electrician installs and wires the system during the build. No proprietary technician, no service lock-in, no dispatch fee to change a setting.',
+  },
+  {
+    n: '03',
+    t: 'Quoted by the home',
+    d: 'We price the integrated system, not a cart of individual gadgets. One whole-home package per home — so the value is the system, not the box it came in.',
+  },
+  {
+    n: '04',
+    t: 'One app, eleven systems',
+    d: 'Entry, lighting, climate, security, audio and energy — eleven integrated systems, brought into a single app instead of a drawer full of separate remotes and logins.',
+  },
+];
+
+const cities = ['Lehi', 'Provo', 'Salt Lake City', 'St. George'];
+
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Homynex',
+  url: 'https://homynex.com',
+  description:
+    'Homynex is a whole-home smart system sold as a one-time purchase with no monthly fee, installed by licensed local electricians.',
+  parentOrganization: { '@type': 'Organization', name: 'SmartSync Electric Ltd' },
+  areaServed: { '@type': 'State', name: 'Utah' },
+};
+---
+
+<Base
+  title="About Homynex — Whole-Home Smart by SmartSync Electric"
+  description="Homynex is a whole-home smart system by SmartSync Electric — sold as a one-time purchase with no monthly fee, installed by local electricians, serving Utah's Wasatch Front."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+  </Fragment>
+
+  <Nav current="about" />
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="hero-kicker">About</p>
+      <h1 class="hero-h1">Whole-home smart, owned outright.</h1>
+      <p class="hero-sub">
+        Homynex brings eleven integrated systems into one app — bought once, owned for good. No contract,
+        no monthly fee, installed by your own local electrician across Utah's Wasatch Front.
+      </p>
+    </div>
+  </section>
+
+  <!-- CITABLE PASSAGE -->
+  <section class="cite" data-reveal>
+    <div class="cite-inner">
+      <p class="cite-kicker">What Homynex is</p>
+      <p class="cite-text">
+        Homynex is a whole-home smart system supplied by SmartSync Electric, sold in the US as a
+        <strong>one-time purchase with no monthly fee</strong>. It brings eleven integrated systems —
+        entry, lighting, climate, security, audio and energy — into one app, installed by a
+        <strong>licensed local electrician</strong> and quoted as one whole-home package per home.
+        Homynex serves homeowners, builders, electricians and designers across Utah's Wasatch Front —
+        Lehi, Provo, Salt Lake City and St.&nbsp;George. Unlike subscription systems such as Vivint,
+        Homynex is <strong>owned outright</strong> with no contract or monitoring bill.
+      </p>
+    </div>
+  </section>
+
+  <!-- WHAT WE BELIEVE -->
+  <section class="beliefs" data-reveal>
+    <div class="beliefs-inner">
+      <div class="beliefs-head">
+        <p class="sec-kicker">What we believe</p>
+        <h2>Four principles, no fine print.</h2>
+      </div>
+      <div class="belief-cards">
+        {beliefs.map((b) => (
+          <div class="belief-card">
+            <div class="belief-n">{b.n}</div>
+            <h3>{b.t}</h3>
+            <p>{b.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- HOMYNEX, BY SMARTSYNC ELECTRIC -->
+  <section class="parent" data-reveal>
+    <div class="parent-inner">
+      <div class="parent-text">
+        <p class="sec-kicker on-green">The supply chain</p>
+        <h2>Homynex, by SmartSync Electric.</h2>
+        <p class="parent-lead">
+          Homynex is the whole-home smart system supplied through SmartSync Electric Ltd. The whole-home
+          hardware — entry, lighting, climate, security, audio and energy — is sourced and supplied through
+          SmartSync, so a single supplier stands behind every system in the home rather than a dozen
+          unrelated brands.
+        </p>
+        <p class="parent-lead">
+          That one-supplier model is the point. It keeps the eleven systems designed to work together,
+          keeps accountability in one place, and lets a local electrician install a coherent package
+          instead of stitching together gadgets that were never meant to share an app.
+        </p>
+      </div>
+      <ul class="parent-points">
+        <li><strong>One supplier.</strong> Whole-home hardware sourced through SmartSync Electric Ltd.</li>
+        <li><strong>One system.</strong> Eleven integrated systems designed to work together, not eleven brands.</li>
+        <li><strong>One point of accountability.</strong> A single supply chain behind the whole home.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- WHERE WE SERVE -->
+  <section class="serve" data-reveal>
+    <div class="serve-inner">
+      <p class="sec-kicker">Where we serve</p>
+      <h2>Built for Utah's Wasatch Front.</h2>
+      <p class="serve-lead">
+        Homynex is installed across the Wasatch Front and beyond — working with the homeowners, builders,
+        electricians and designers who shape how Utah homes get built.
+      </p>
+      <ul class="serve-chips">
+        {cities.map((c) => (<li>{c}</li>))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- LEADERSHIP -->
+  <section class="lead" data-reveal>
+    <div class="lead-inner">
+      <p class="sec-kicker">Leadership</p>
+      <h2>The team behind the system.</h2>
+      <p class="lead-note">Founder &amp; leadership bios coming soon.</p>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta" data-reveal>
+    <div class="cta-card">
+      <p class="cta-kicker">Owned outright, no monthly fee</p>
+      <h2>See the whole home work as one.</h2>
+      <p class="cta-lead">
+        Book a guided walkthrough of every integrated system and learn how Homynex is specified, installed
+        and owned — one supplier, one app, no monthly fee.
+      </p>
+      <a href="/contact/" class="btn-primary">Book a walkthrough</a>
+    </div>
+  </section>
+
+  <Footer />
+
+<style>
+  /* ---------- shared buttons ---------- */
+  .btn-primary {
+    text-decoration: none; background: var(--green); color: #fff; font-weight: 600; font-size: 16px;
+    padding: 16px 28px; border-radius: 999px; display: inline-block;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+  .btn-primary:hover { transform: translateY(-2px); background: var(--green-2); }
+
+  /* ---------- shared section kicker ---------- */
+  .sec-kicker { font: 600 12px/1 'Hanken Grotesk', sans-serif; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terra); margin: 0 0 14px; }
+  .sec-kicker.on-green { color: var(--terra-soft); }
+
+  /* ---------- hero ---------- */
+  .hero { max-width: 1240px; margin: 0 auto; padding: clamp(56px, 8vw, 104px) 32px clamp(32px, 5vw, 64px); }
+  .hero-inner { max-width: 24ch; }
+  .hero-kicker { font: 600 13px/1 'Hanken Grotesk', sans-serif; letter-spacing: 0.16em; text-transform: uppercase; color: var(--terra); margin: 0 0 18px; }
+  .hero-h1 { margin: 0; font-weight: 700; font-size: clamp(40px, 6.4vw, 82px); line-height: 0.98; letter-spacing: -0.03em; color: var(--ink); }
+  .hero-sub { max-width: 54ch; margin: 24px 0 0; font-size: clamp(16px, 1.6vw, 20px); line-height: 1.55; color: var(--muted); }
+
+  /* ---------- citable passage ---------- */
+  .cite { max-width: 1240px; margin: 0 auto; padding: 20px 32px 20px; }
+  .cite-inner { max-width: 760px; }
+  .cite-kicker { font: 600 12px/1 'Hanken Grotesk', sans-serif; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green); margin: 0 0 16px; }
+  .cite-text { margin: 0; font-size: clamp(18px, 2vw, 22px); line-height: 1.6; color: var(--ink); letter-spacing: -0.005em; }
+  .cite-text strong { color: var(--ink); font-weight: 700; box-shadow: inset 0 -0.5em 0 rgba(30, 91, 67, 0.12); }
+
+  /* ---------- what we believe ---------- */
+  .beliefs { max-width: 1240px; margin: 0 auto; padding: 72px 32px; }
+  .beliefs-head { margin-bottom: 34px; }
+  .beliefs-head h2 { margin: 0; font-weight: 700; font-size: clamp(28px, 3.6vw, 46px); letter-spacing: -0.02em; line-height: 1.04; max-width: 18ch; }
+  .belief-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .belief-card { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 28px 26px; transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease; }
+  .belief-card:hover { transform: translateY(-6px); border-color: var(--green); box-shadow: 0 18px 40px rgba(22, 20, 18, 0.1); }
+  .belief-n { font: 700 15px/1 'Schibsted Grotesk', sans-serif; color: var(--terra); }
+  .belief-card h3 { margin: 16px 0 10px; font-weight: 600; font-size: 20px; letter-spacing: -0.01em; line-height: 1.12; }
+  .belief-card p { margin: 0; font-size: 14.5px; line-height: 1.55; color: var(--muted-2); }
+
+  /* ---------- parent / supply chain ---------- */
+  .parent { max-width: 1320px; margin: 0 auto; padding: 16px 24px 72px; }
+  .parent-inner { border-radius: 20px; overflow: hidden; background: var(--green); color: #fff; display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(28px, 4vw, 56px); padding: clamp(36px, 4.5vw, 64px); }
+  .parent-text h2 { margin: 0; font-weight: 700; font-size: clamp(28px, 3.8vw, 46px); line-height: 1.04; letter-spacing: -0.02em; }
+  .parent-lead { margin: 18px 0 0; font-size: 16px; line-height: 1.6; color: #d6e7de; max-width: 52ch; }
+  .parent-points { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 18px; align-self: center; }
+  .parent-points li { font-size: 14.5px; line-height: 1.5; color: #d6e7de; border-top: 2px solid var(--mint); padding-top: 12px; }
+  .parent-points strong { color: #fff; font-weight: 700; }
+
+  /* ---------- where we serve ---------- */
+  .serve { max-width: 1240px; margin: 0 auto; padding: 56px 32px; }
+  .serve-inner { max-width: 760px; }
+  .serve h2 { margin: 0; font-weight: 700; font-size: clamp(28px, 3.6vw, 46px); letter-spacing: -0.02em; line-height: 1.04; }
+  .serve-lead { margin: 16px 0 0; font-size: 17px; line-height: 1.55; color: var(--muted); max-width: 52ch; }
+  .serve-chips { display: flex; flex-wrap: wrap; gap: 12px; list-style: none; margin: 28px 0 0; padding: 0; }
+  .serve-chips li {
+    font: 600 15px/1 'Schibsted Grotesk', sans-serif; color: var(--ink); letter-spacing: 0.01em;
+    background: #fff; border: 1px solid var(--line); padding: 12px 20px; border-radius: 999px;
+  }
+
+  /* ---------- leadership ---------- */
+  .lead { max-width: 1240px; margin: 0 auto; padding: 16px 32px 72px; }
+  .lead-inner {
+    max-width: 760px; background: #efeadf; border: 1px solid var(--line-2);
+    border-radius: 20px; padding: clamp(34px, 4vw, 52px);
+  }
+  .lead h2 { margin: 0; font-weight: 700; font-size: clamp(26px, 3.2vw, 40px); letter-spacing: -0.02em; line-height: 1.05; }
+  .lead-note { margin: 16px 0 0; font-size: 17px; line-height: 1.55; color: var(--muted); }
+
+  /* ---------- cta ---------- */
+  .cta { max-width: 1240px; margin: 0 auto; padding: 0 32px 96px; }
+  .cta-card { border-radius: 20px; background: var(--dark); color: var(--on-dark); padding: clamp(48px, 6vw, 84px) 32px; text-align: center; }
+  .cta-kicker { font: 600 12px/1 'Hanken Grotesk', sans-serif; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terra-soft); margin: 0 0 20px; }
+  .cta-card h2 { margin: 0 auto; max-width: 18ch; font-weight: 700; font-size: clamp(32px, 4.6vw, 58px); line-height: 1.02; letter-spacing: -0.025em; color: #fff; }
+  .cta-lead { margin: 20px auto 0; max-width: 50ch; font-size: 17px; line-height: 1.6; color: var(--on-dark-muted); }
+  .cta-card .btn-primary { margin-top: 32px; }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 880px) {
+    .belief-cards { grid-template-columns: 1fr 1fr; }
+    .parent-inner { grid-template-columns: 1fr; gap: 28px; }
+    .parent-points { align-self: stretch; }
+  }
+  @media (max-width: 560px) {
+    .hero { padding: 48px 22px 24px; }
+    .cite { padding: 16px 22px; }
+    .beliefs { padding: 56px 22px; }
+    .belief-cards { grid-template-columns: 1fr; }
+    .parent { padding: 8px 16px 56px; }
+    .serve { padding: 40px 22px; }
+    .lead { padding: 8px 22px 56px; }
+    .cta { padding: 0 22px 64px; }
+  }
+</style>
+</Base>

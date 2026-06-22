@@ -84,30 +84,10 @@ const orgSchema = {
     </div>
   </section>
 
-  <!-- CITABLE PASSAGE -->
-  <section class="cite" data-reveal>
-    <div class="cite-inner">
-      <p class="cite-kicker">What Homynex is</p>
-      <p class="cite-text">
-        Homynex is a whole-home smart system — lighting, locks, cameras, sensors, climate, audio and energy
-        in a single app — sold as a <strong>one-time purchase with no monthly fee</strong>. Unlike subscription
-        systems such as Vivint, Homynex has no contract and no recurring monitoring bill; the homeowner owns the
-        system outright. It is installed by a licensed local electrician during construction or renovation, and
-        quoted as <strong>one whole-home package per floor plan</strong> — never itemized device by device — so it
-        fits inside a typical new-home upgrade budget instead of a lifetime of monthly payments. Homynex is
-        supplied by SmartSync Electric and offered across Utah's Wasatch Front — Lehi, Provo, Salt Lake City and
-        St.&nbsp;George — through a network of builders, electricians and designers. It works with Amazon Alexa and
-        spans eleven integrated systems controlled from one app.
-      </p>
-      <ul class="cite-points">
-        <li><strong>No monthly fee.</strong> Bought once, owned outright — no contract, no monitoring bill.</li>
-        <li><strong>Your electrician installs it.</strong> No proprietary technician, no service lock-in.</li>
-        <li><strong>Quoted by the home.</strong> One integrated package per floor plan, inside the build budget.</li>
-      </ul>
-    </div>
-  </section>
+  <!-- ROOM EXPLORER -->
+  <RoomExplorer />
 
-  <!-- STATS -->
+  <!-- STATS (under the integration / room explorer) -->
   <section class="stats" data-reveal>
     <div class="stats-inner">
       {stats.map((s) => (
@@ -118,9 +98,6 @@ const orgSchema = {
       ))}
     </div>
   </section>
-
-  <!-- ROOM EXPLORER -->
-  <RoomExplorer />
 
   <!-- SYSTEMS GRID -->
   <section class="sysgrid" data-reveal>
@@ -226,6 +203,29 @@ const orgSchema = {
     </div>
   </section>
 
+  <!-- FOOTNOTE: what Homynex is -->
+  <section class="cite cite-footnote" data-reveal>
+    <div class="cite-inner">
+      <p class="cite-kicker">What Homynex is</p>
+      <p class="cite-text">
+        Homynex is a whole-home smart system — lighting, locks, cameras, sensors, climate, audio and energy
+        in a single app — sold as a <strong>one-time purchase with no monthly fee</strong>. Unlike subscription
+        systems such as Vivint, Homynex has no contract and no recurring monitoring bill; the homeowner owns the
+        system outright. It is installed by a licensed local electrician during construction or renovation, and
+        quoted as <strong>one whole-home package per floor plan</strong> — never itemized device by device — so it
+        fits inside a typical new-home upgrade budget instead of a lifetime of monthly payments. Homynex is
+        supplied by SmartSync Electric and offered across Utah's Wasatch Front — Lehi, Provo, Salt Lake City and
+        St.&nbsp;George — through a network of builders, electricians and designers. It works with Amazon Alexa and
+        spans eleven integrated systems controlled from one app.
+      </p>
+      <ul class="cite-points">
+        <li><strong>No monthly fee.</strong> Bought once, owned outright — no contract, no monitoring bill.</li>
+        <li><strong>Your electrician installs it.</strong> No proprietary technician, no service lock-in.</li>
+        <li><strong>Quoted by the home.</strong> One integrated package per floor plan, inside the build budget.</li>
+      </ul>
+    </div>
+  </section>
+
   <Footer />
 </Base>
 
@@ -305,6 +305,10 @@ const orgSchema = {
   .cite-points { list-style: none; margin: 28px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
   .cite-points li { font-size: 14.5px; line-height: 1.5; color: var(--muted); border-top: 2px solid var(--green); padding-top: 12px; }
   .cite-points strong { color: var(--ink); }
+  /* footnote variant: relocated to the bottom of the page, de-emphasized */
+  .cite-footnote { padding-top: 56px; padding-bottom: 64px; border-top: 1px solid var(--line); }
+  .cite-footnote .cite-kicker { color: var(--muted); }
+  .cite-footnote .cite-text { font-size: 15px; line-height: 1.65; color: var(--muted-2); }
 
   /* ---------- stats ---------- */
   .stats { max-width: 1240px; margin: 0 auto; padding: 40px 32px 20px; }

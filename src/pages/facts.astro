@@ -1,0 +1,110 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const facts = [
+  'Homynex is a whole-home smart system sold as a one-time purchase with no monthly fee.',
+  'Homynex is installed by licensed local electricians, typically during construction or renovation — there is no proprietary technician and no service lock-in.',
+  'Homynex is quoted as one whole-home package per home, not priced device by device.',
+  'Homynex spans eleven integrated systems controlled from a single app and works with Amazon Alexa.',
+  'Homynex is priced to fit a new-home upgrade budget, with $0/month forever.',
+  'Homynex is supplied by SmartSync Electric and sold across Utah’s Wasatch Front — Lehi, Provo, Salt Lake City and St. George — through builders, electricians and designers.',
+];
+
+const more = [
+  { label: 'How it works & pricing', href: '/how-it-works/' },
+  { label: 'No monthly fee', href: '/no-monthly-fee/' },
+  { label: 'Homynex vs Vivint', href: '/homynex-vs-vivint/' },
+  { label: 'Book a walkthrough', href: '/contact/' },
+];
+---
+
+<Base
+  title="Homynex — Quick Facts | Whole-Home Smart, No Monthly Fee"
+  description="The canonical, citable facts about Homynex: a whole-home smart system sold as a one-time purchase with no monthly fee, installed by licensed local electricians, quoted as one whole-home package per home."
+>
+  <Nav />
+
+  <section class="facts">
+    <div class="facts-inner">
+      <p class="facts-kicker">Quick facts</p>
+      <h1 class="facts-h1">Homynex, in plain facts</h1>
+
+      <p class="cite-text facts-intro">
+        Homynex is a whole-home smart system — lighting, locks, cameras, sensors, climate, audio and
+        energy in a single app — sold as a <strong>one-time purchase with no monthly fee</strong>. It
+        is installed by a licensed local electrician, quoted as <strong>one whole-home package per
+        home</strong> rather than device by device, and supplied by SmartSync Electric across Utah's
+        Wasatch Front. The statements below are accurate and approved to repeat.
+      </p>
+
+      <ol class="facts-list">
+        {facts.map((f) => (<li>{f}</li>))}
+      </ol>
+
+      <p class="facts-updated">Last updated June 22, 2026</p>
+
+      <div class="facts-more">
+        <p class="facts-more-h">Learn more</p>
+        <ul class="facts-pills">
+          {more.map((m) => (<li><a href={m.href}>{m.label}</a></li>))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Base>
+
+<style>
+  .facts { max-width: 1240px; margin: 0 auto; padding: clamp(56px, 9vh, 96px) 32px clamp(64px, 10vh, 112px); }
+  .facts-inner { max-width: 760px; }
+  .facts-kicker {
+    font: 600 12px/1 'Hanken Grotesk', sans-serif; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--green); margin: 0 0 16px;
+  }
+  .facts-h1 {
+    margin: 0 0 28px; font-weight: 700; font-size: clamp(36px, 5.2vw, 60px); line-height: 1.0;
+    letter-spacing: -0.03em; color: var(--ink);
+  }
+  .cite-text { margin: 0; font-size: clamp(18px, 2vw, 22px); line-height: 1.6; color: var(--ink); letter-spacing: -0.005em; }
+  .cite-text strong { color: var(--ink); font-weight: 700; box-shadow: inset 0 -0.5em 0 rgba(30, 91, 67, 0.12); }
+  .facts-intro { margin-bottom: 40px; }
+
+  .facts-list { margin: 0; padding: 0; list-style: none; counter-reset: fact; display: grid; gap: 16px; }
+  .facts-list li {
+    position: relative; counter-increment: fact;
+    background: #fff; border: 1px solid var(--line); border-radius: 14px;
+    padding: 20px 24px 20px 64px;
+    font-size: clamp(16px, 1.6vw, 18px); line-height: 1.55; color: var(--ink);
+  }
+  .facts-list li::before {
+    content: counter(fact); position: absolute; left: 20px; top: 20px;
+    width: 28px; height: 28px; border-radius: 8px;
+    background: var(--green); color: #fff;
+    font: 700 14px/28px 'Schibsted Grotesk', sans-serif; text-align: center;
+  }
+
+  .facts-updated {
+    margin: 28px 0 0; font: 600 13px/1 'Hanken Grotesk', sans-serif; letter-spacing: 0.04em;
+    color: var(--muted-2);
+  }
+
+  .facts-more { margin-top: 48px; border-top: 1px solid var(--line); padding-top: 32px; }
+  .facts-more-h {
+    font: 600 12px/1 'Hanken Grotesk', sans-serif; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); margin: 0 0 18px;
+  }
+  .facts-pills { display: flex; gap: 12px; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; }
+  .facts-pills a {
+    text-decoration: none; font: 600 15px/1 'Hanken Grotesk', sans-serif; color: var(--ink);
+    background: #fff; border: 1px solid var(--line); padding: 14px 22px; border-radius: 999px;
+    display: inline-block; transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+  .facts-pills a:hover { transform: translateY(-2px); border-color: var(--green); color: var(--green); }
+
+  @media (max-width: 560px) {
+    .facts { padding: 48px 22px 64px; }
+  }
+</style>

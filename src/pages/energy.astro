@@ -67,12 +67,27 @@ const flow = [
 ];
 
 const certs = ['CE-EMC', 'UN38.3', 'MSDS', 'UL Listed', 'IP65'];
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Homynex Energy',
+  serviceType: 'Home solar, battery storage and EV charging',
+  description:
+    'Homynex energy brings solar, home backup power and EV charging into one app — part of the whole-home Homynex system, a one-time purchase with no monthly fee.',
+  provider: { '@id': 'https://homynex.com/#org' },
+  areaServed: { '@type': 'State', name: 'Utah' },
+};
 ---
 
 <Base
   title="Home Energy — Solar, Storage & EV Charging | Homynex"
   description="Generate, store and use your own clean energy — solar inverters, modular LiFePO₄ battery storage and EV charging, all in the Homynex app. One-time purchase, no monthly fee."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  </Fragment>
+
   <Nav current="energy" />
 
   <!-- HERO -->

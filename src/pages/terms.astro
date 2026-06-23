@@ -1,0 +1,86 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base
+  title="Terms | Homynex"
+  description="The basic terms that apply to your use of the Homynex website."
+>
+  <Nav />
+
+  <section class="legal">
+    <div class="legal-inner">
+      <p class="legal-note">This is a placeholder; final legal copy pending counsel.</p>
+      <p class="legal-kicker">Legal</p>
+      <h1 class="legal-h1">Terms of Use</h1>
+      <p class="legal-updated">Last updated June 22, 2026</p>
+
+      <h2>Using this site</h2>
+      <p>
+        This website is provided by SmartSync Electric to share information about Homynex. By using
+        it, you agree to use it for lawful purposes and in a way that does not interfere with anyone
+        else's use of it.
+      </p>
+
+      <h2>Information &amp; quotes</h2>
+      <p>
+        Content here is for general information. Product details, scope and availability can change,
+        and nothing on this site is a binding offer. Every home is quoted individually — a formal
+        quote is provided directly, not through this website.
+      </p>
+
+      <h2>Trademarks</h2>
+      <p>
+        Homynex is a product of SmartSync Electric. Other names and brands referenced on this site —
+        including for comparison — belong to their respective owners and are used for identification
+        only.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        Questions about these terms? Email us at
+        <a href="mailto:hello@homynex.com">hello@homynex.com</a>.
+      </p>
+    </div>
+  </section>
+
+  <Footer />
+</Base>
+
+<style>
+  .legal { max-width: 1240px; margin: 0 auto; padding: clamp(56px, 9vh, 96px) 32px clamp(64px, 10vh, 112px); }
+  .legal-inner { max-width: 760px; }
+  .legal-note {
+    margin: 0 0 28px; font-size: 13.5px; line-height: 1.5; color: var(--muted-2);
+    background: #efeadf; border: 1px solid var(--line-2); border-radius: 10px; padding: 12px 16px;
+  }
+  .legal-kicker {
+    font: 600 12px/1 'Hanken Grotesk', sans-serif; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--green); margin: 0 0 16px;
+  }
+  .legal-h1 {
+    margin: 0; font-weight: 700; font-size: clamp(36px, 5.2vw, 60px); line-height: 1.0;
+    letter-spacing: -0.03em; color: var(--ink);
+  }
+  .legal-updated {
+    margin: 18px 0 0; font: 600 13px/1 'Hanken Grotesk', sans-serif; letter-spacing: 0.04em;
+    color: var(--muted-2);
+  }
+  .legal-inner h2 {
+    margin: 44px 0 12px; font-weight: 600; font-size: clamp(20px, 2.4vw, 26px); letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .legal-inner p {
+    margin: 0; font-size: clamp(16px, 1.5vw, 18px); line-height: 1.65; color: var(--muted);
+  }
+  .legal-inner a {
+    color: var(--green); font-weight: 600; text-decoration: none;
+    border-bottom: 1px solid rgba(30, 91, 67, 0.35); padding-bottom: 1px;
+  }
+  .legal-inner a:hover { border-bottom-color: var(--green); }
+  @media (max-width: 560px) {
+    .legal { padding: 48px 22px 64px; }
+  }
+</style>

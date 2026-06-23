@@ -22,8 +22,48 @@ const links = [
       ))}
     </nav>
     <a href="/contact/" class="nav-cta">Book a walkthrough</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-mobile" aria-label="Menu">
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+    </button>
   </div>
+  <nav id="nav-mobile" class="nav-mobile" aria-label="Mobile" hidden>
+    {links.map((l) => (
+      <a href={l.href} class={l.key === current ? 'active' : ''}>{l.label}</a>
+    ))}
+    <a href="/contact/" class="nav-mobile-cta">Book a walkthrough</a>
+  </nav>
 </header>
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const panel = document.getElementById('nav-mobile');
+  if (toggle && panel) {
+    const setOpen = (open) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.classList.toggle('is-open', open);
+      panel.classList.toggle('is-open', open);
+      if (open) {
+        panel.hidden = false;
+      } else {
+        panel.hidden = true;
+      }
+    };
+    toggle.addEventListener('click', () => {
+      setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+    panel.querySelectorAll('a').forEach((a) => {
+      a.addEventListener('click', () => setOpen(false));
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+  }
+</script>
 
 <style>
   .nav {
@@ -57,9 +97,46 @@ const links = [
     white-space: nowrap; transition: transform 0.2s ease, background 0.2s ease;
   }
   .nav-cta:hover { transform: translateY(-1px); background: var(--green); }
+
+  /* hamburger — hidden on desktop */
+  .nav-toggle {
+    display: none; flex-direction: column; justify-content: center; gap: 5px;
+    width: 44px; height: 44px; padding: 0; margin-left: 4px;
+    background: transparent; border: 0; cursor: pointer; border-radius: 10px;
+  }
+  .nav-toggle:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+  .nav-toggle-bar {
+    display: block; width: 22px; height: 2px; margin: 0 auto; background: var(--ink);
+    border-radius: 2px; transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  .nav-toggle.is-open .nav-toggle-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.is-open .nav-toggle-bar:nth-child(2) { opacity: 0; }
+  .nav-toggle.is-open .nav-toggle-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* mobile panel — hidden on desktop */
+  .nav-mobile { display: none; }
+  .nav-mobile a {
+    display: block; text-decoration: none; color: var(--ink);
+    font: 500 16px/1 'Hanken Grotesk', sans-serif;
+    padding: 16px 20px; border-bottom: 1px solid var(--line);
+  }
+  .nav-mobile a.active { color: var(--green); }
+  .nav-mobile a:hover { color: var(--green); }
+  .nav-mobile-cta {
+    margin: 16px 20px 4px; text-align: center; background: var(--ink); color: var(--bg) !important;
+    font-weight: 600 !important; border-radius: 999px !important; border-bottom: 0 !important;
+  }
+  .nav-mobile-cta:hover { background: var(--green); color: var(--bg) !important; }
+
   @media (max-width: 860px) {
     .nav-links { display: none; }
     .nav-inner { padding: 12px 20px; gap: 14px; }
     .nav-cta { margin-left: auto; }
+    .nav-toggle { display: flex; }
+    .nav-mobile.is-open { display: block; }
+    .nav-mobile {
+      border-top: 1px solid var(--line);
+      background: var(--bg); padding: 8px 0 16px;
+    }
   }
 </style>

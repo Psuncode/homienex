@@ -83,12 +83,46 @@ const unlocks = [
   { n: '07', t: 'Dynamic password' },
   { n: '08', t: 'Remote unlock' },
 ];
+
+// Descriptive alt text per product group, keyed by name.
+const groupAlts = {
+  'Control Panels': '10-inch smart control panel',
+  'Video Doorbells': '1080p video doorbell',
+  'Smart Locks': 'Keyless smart deadbolt on a front door',
+  'Garage & Gate Control': 'Wi-Fi garage door controller',
+};
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Homynex Entry System',
+  serviceType: 'Smart entry — locks, video doorbells, access hubs',
+  description:
+    'The Homynex Entry System covers smart locks, video doorbells and access hubs, installed by a licensed local electrician as part of the whole-home Homynex package — a one-time purchase with no monthly fee.',
+  provider: { '@id': 'https://homynex.com/#org' },
+  areaServed: { '@type': 'State', name: 'Utah' },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://homynex.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Systems', item: 'https://homynex.com/systems' },
+    { '@type': 'ListItem', position: 3, name: 'Entry System', item: 'https://homynex.com/systems/entry' },
+  ],
+};
 ---
 
 <Base
   title="Entry System — Smart Locks, Doorbells & Hubs | Homynex"
   description="Homynex Entry System: smart locks, video doorbells and control hubs for secure, keyless access. Part of the whole-home system — a one-time purchase with no monthly fee."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
   <Nav current="systems" />
 
   <!-- BREADCRUMB -->
@@ -145,7 +179,7 @@ const unlocks = [
       <div class={`group ${i % 2 === 1 ? 'group-reverse' : ''}`}>
         <img
           src={g.img}
-          alt={g.name}
+          alt={groupAlts[g.name] || g.name}
           class="group-img"
           loading="lazy"
           decoding="async"

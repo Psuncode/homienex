@@ -21,6 +21,7 @@ const appFeatures = [
 const orgSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
+  '@id': 'https://homynex.com/#org',
   name: 'Homynex',
   url: 'https://homynex.com',
   description:
@@ -28,6 +29,31 @@ const orgSchema = {
   parentOrganization: { '@type': 'Organization', name: 'SmartSync Electric Ltd' },
   areaServed: { '@type': 'State', name: 'Utah' },
   knowsAbout: ['whole-home automation', 'smart home with no monthly fee', 'smart home for builders', 'Vivint alternative'],
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Homynex',
+  url: 'https://homynex.com',
+  publisher: { '@id': 'https://homynex.com/#org' },
+  inLanguage: 'en-US',
+};
+
+// Descriptive alt text per system, keyed by name — avoids the duplicate
+// "Name — Name" alts the systems grid produced from `${name} — ${tag}`.
+const systemAlts = {
+  'Entry System': 'Smart lock and video doorbell at a front door',
+  'Lighting & Power': 'In-wall smart light switch and dimmer',
+  'Sensors & Control': 'Smart scene panel and motion sensor',
+  'Video Surveillance': 'Pan-tilt security camera',
+  'Comfort & Climate': 'Smart thermostat on a wall',
+  'Background Music': 'Architectural ceiling speaker',
+  'Security System': 'Smart alarm keypad and sensors',
+  'Blinds & Curtains': 'Motorized roller blinds on a window',
+  'Whole-Home Wi-Fi': 'Mesh Wi-Fi node',
+  'Home Backup Power': 'Home battery wall and solar storage',
+  'Smart Peripherals': 'Smart track lighting',
 };
 ---
 
@@ -37,6 +63,7 @@ const orgSchema = {
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
   </Fragment>
 
   <Nav current="home" />
@@ -90,7 +117,7 @@ const orgSchema = {
     <div class="sys-cards">
       {systems.map((c) => (
         <a href={c.href} class="sys-card">
-          <img src={c.img} alt={`${c.name} — ${c.tag}`} class="sys-img" loading="lazy" decoding="async" width="400" height="150" />
+          <img src={c.img} alt={systemAlts[c.name] || c.name} class="sys-img" loading="lazy" decoding="async" width="400" height="150" />
           <div class="sys-body">
             <div class="sys-meta">
               <span class="sys-n">{c.n}</span>
@@ -125,6 +152,15 @@ const orgSchema = {
         ))}
       </div>
       <a href="/contact/" class="btn-primary pricing-cta">Get a quote for your development</a>
+      <nav class="pricing-links" aria-label="Learn more about Homynex pricing">
+        <a href="/how-it-works/">How pricing works</a>
+        <span class="pricing-links-sep" aria-hidden="true">·</span>
+        <a href="/no-monthly-fee/">No monthly fee</a>
+        <span class="pricing-links-sep" aria-hidden="true">·</span>
+        <a href="/homynex-vs-vivint/">Homynex vs Vivint</a>
+        <span class="pricing-links-sep" aria-hidden="true">·</span>
+        <a href="/builders/">For builders</a>
+      </nav>
     </div>
   </section>
 
@@ -330,6 +366,13 @@ const orgSchema = {
   .pstep h3 { margin: 16px 0 10px; font-weight: 600; font-size: 20px; letter-spacing: -0.01em; }
   .pstep p { margin: 0; font-size: 14.5px; line-height: 1.55; color: var(--muted-2); }
   .pricing-cta { margin-top: 36px; }
+  .pricing-links { margin-top: 20px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
+  .pricing-links a {
+    font: 600 14px/1 'Hanken Grotesk', sans-serif; color: var(--green); text-decoration: none;
+    border-bottom: 1px solid transparent; padding-bottom: 2px; transition: border-color 0.2s ease;
+  }
+  .pricing-links a:hover { border-bottom-color: var(--green); }
+  .pricing-links-sep { color: var(--muted-2); font-size: 13px; }
 
   /* ---------- energy ---------- */
   .energy { max-width: 1320px; margin: 0 auto; padding: 88px 24px; }

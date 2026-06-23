@@ -16,12 +16,28 @@ const steps = [
   { n: '2', t: 'Add devices by room', d: 'Pair devices and organize them room by room.' },
   { n: '3', t: 'Build your scenes', d: 'Automate lighting, climate, blinds and more with one tap.' },
 ];
+
+const appSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Homynex App',
+  applicationCategory: 'LifestyleApplication',
+  operatingSystem: 'iOS, Android',
+  description:
+    'The Homynex app controls every connected device in the home from one screen — multi-home management, room-based control, scenes, and family sharing. Powered by Tuya, included with the Homynex system at no monthly fee.',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  publisher: { '@id': 'https://homynex.com/#org' },
+};
 ---
 
 <Base
   title="The Homynex App — Every Device, One Screen"
   description="Manage your whole home from a single app — multi-home management, room control, scenes, family sharing and video doorbell. Powered by Tuya, works with Alexa. No monthly fee."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(appSchema)} />
+  </Fragment>
+
   <Nav current="app" />
 
   <!-- HERO -->

@@ -5,6 +5,13 @@ import { buildScene } from '../lib/isometric.js';
 const { svg, spots } = buildScene(hotspots);
 const defaultId = 'entry';
 const spotData = hotspots.map((h) => ({ ...h, ...spots[h.id], system: systems[h.sysIdx] }));
+
+const stats = [
+  { v: '11', l: 'integrated systems, one supplier' },
+  { v: '1', l: 'app for the whole home' },
+  { v: '$0', l: 'monthly fees, ever' },
+  { v: '2-yr', l: 'parts & labor warranty' },
+];
 ---
 
 <section class="rx" data-reveal>
@@ -51,6 +58,15 @@ const spotData = hotspots.map((h) => ({ ...h, ...spots[h.id], system: systems[h.
           </div>
         ))}
       </div>
+    </div>
+
+    <div class="rx-stats">
+      {stats.map((s) => (
+        <div class="rx-stat">
+          <div class="rx-stat-v">{s.v}</div>
+          <div class="rx-stat-l">{s.l}</div>
+        </div>
+      ))}
     </div>
   </div>
 </section>
@@ -155,9 +171,18 @@ const spotData = hotspots.map((h) => ({ ...h, ...spots[h.id], system: systems[h.
   }
   .rx-link:hover { transform: translateY(-2px); background: var(--green-2); }
 
+  /* stats woven into the base of the integration block */
+  .rx-stats {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+    margin-top: 52px; padding-top: 36px; border-top: 1px solid var(--dark-line);
+  }
+  .rx-stat-v { font: 700 clamp(30px, 3.4vw, 46px)/1 'Schibsted Grotesk', sans-serif; letter-spacing: -0.02em; color: #fff; }
+  .rx-stat-l { font-size: 13.5px; color: var(--on-dark-muted); margin-top: 9px; font-weight: 500; }
+
   @media (max-width: 880px) {
     .rx-wrap { padding: 64px 22px; }
     .rx-grid { grid-template-columns: 1fr; }
     .rx-hlabel { display: none; } /* declutter dots on small screens */
+    .rx-stats { grid-template-columns: 1fr 1fr; gap: 28px 20px; margin-top: 40px; }
   }
 </style>

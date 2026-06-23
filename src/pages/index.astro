@@ -6,12 +6,6 @@ import RoomExplorer from '../components/RoomExplorer.astro';
 import { systems } from '../data/systems.js';
 
 const partners = ['Alexa', 'Google', 'Tuya', 'Zigbee', 'Matter'];
-const stats = [
-  { v: '11', l: 'integrated systems, one supplier' },
-  { v: '1', l: 'app for the whole home' },
-  { v: '$0', l: 'monthly fees, ever' },
-  { v: '2-yr', l: 'parts & labor warranty' },
-];
 const steps = [
   { n: '01', t: 'We walk your plans', d: 'We review the floor plan and which of the eleven systems each home needs — entry, lighting, climate, security, audio and energy.' },
   { n: '02', t: 'We spec the whole home', d: 'One integrated package — Essentials, Enhanced or Whole-home scope — tuned to the build, not a cart of individual gadgets.' },
@@ -84,20 +78,8 @@ const orgSchema = {
     </div>
   </section>
 
-  <!-- ROOM EXPLORER -->
+  <!-- ROOM EXPLORER (integration — stats are woven into its base) -->
   <RoomExplorer />
-
-  <!-- STATS (under the integration / room explorer) -->
-  <section class="stats" data-reveal>
-    <div class="stats-inner">
-      {stats.map((s) => (
-        <div class="stat">
-          <div class="stat-v">{s.v}</div>
-          <div class="stat-l">{s.l}</div>
-        </div>
-      ))}
-    </div>
-  </section>
 
   <!-- SYSTEMS GRID -->
   <section class="sysgrid" data-reveal>

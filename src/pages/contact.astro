@@ -15,10 +15,10 @@ const reasons = [
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  '@id': 'https://homynex.com/#org',
+  '@id': 'https://homienex.com/#org',
   name: 'Homynex',
-  url: 'https://homynex.com',
-  email: 'hello@homynex.com',
+  url: 'https://homienex.com',
+  email: 'hello@homienex.com',
   areaServed: { '@type': 'State', name: 'Utah' },
   parentOrganization: { '@type': 'Organization', name: 'SmartSync Electric Ltd' },
 };
@@ -115,18 +115,21 @@ const localBusinessSchema = {
           See every Homynex system integrated and live. Bring your plans and we'll walk through
           specification for your development.
         </p>
-        <a href="mailto:hello@homynex.com" class="side-email">hello@homynex.com</a>
+        <a href="mailto:hello@homienex.com" class="side-email">hello@homienex.com</a>
       </div>
 
-      <img
-        src="/catalog_images/p51_2.jpg"
-        alt="The Homynex showroom with integrated lighting, entry and climate systems on display"
-        class="side-img"
-        loading="lazy"
-        decoding="async"
-        width="400"
-        height="200"
-      />
+      <picture style="display:contents">
+        <source type="image/webp" srcset="/catalog_images/p51_2.webp" />
+        <img
+          src="/catalog_images/p51_2.jpg"
+          alt="The Homynex showroom with integrated lighting, entry and climate systems on display"
+          class="side-img"
+          loading="lazy"
+          decoding="async"
+          width="400"
+          height="200"
+        />
+      </picture>
 
       <div class="side-light">
         <p class="side-kicker">Why developers choose Homynex</p>

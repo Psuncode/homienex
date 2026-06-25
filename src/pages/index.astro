@@ -21,9 +21,9 @@ const appFeatures = [
 const orgSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  '@id': 'https://homynex.com/#org',
+  '@id': 'https://homienex.com/#org',
   name: 'Homynex',
-  url: 'https://homynex.com',
+  url: 'https://homienex.com',
   description:
     'Homynex is a whole-home smart system sold as a one-time purchase with no monthly fee, installed by licensed local electricians, and quoted as one whole-home package per home.',
   parentOrganization: { '@type': 'Organization', name: 'SmartSync Electric Ltd' },
@@ -35,8 +35,8 @@ const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'Homynex',
-  url: 'https://homynex.com',
-  publisher: { '@id': 'https://homynex.com/#org' },
+  url: 'https://homienex.com',
+  publisher: { '@id': 'https://homienex.com/#org' },
   inLanguage: 'en-US',
 };
 
@@ -71,15 +71,18 @@ const systemAlts = {
   <!-- HERO -->
   <section class="hero">
     <div class="hero-media">
-      <img
-        src="/catalog_images/p43_0.jpg"
-        alt="Modern living room with smart roller blinds and a city skyline view, controlled by Homynex"
-        class="hero-img"
-        fetchpriority="high"
-        decoding="async"
-        width="1320"
-        height="720"
-      />
+      <picture style="display:contents">
+        <source type="image/webp" srcset="/catalog_images/p43_0.webp" />
+        <img
+          src="/catalog_images/p43_0.jpg"
+          alt="Modern living room with smart roller blinds and a city skyline view, controlled by Homynex"
+          class="hero-img"
+          fetchpriority="high"
+          decoding="async"
+          width="1320"
+          height="720"
+        />
+      </picture>
       <div class="hero-scrim" aria-hidden="true"></div>
       <div class="hero-content">
         <p class="hero-kicker">For Utah builders &amp; property developers</p>
@@ -117,7 +120,10 @@ const systemAlts = {
     <div class="sys-cards">
       {systems.map((c) => (
         <a href={c.href} class="sys-card">
-          <img src={c.img} alt={systemAlts[c.name] || c.name} class="sys-img" loading="lazy" decoding="async" width="400" height="150" />
+          <picture style="display:contents">
+            <source type="image/webp" srcset={c.img.replace('.jpg', '.webp')} />
+            <img src={c.img} alt={systemAlts[c.name] || c.name} class="sys-img" loading="lazy" decoding="async" width="400" height="150" />
+          </picture>
           <div class="sys-body">
             <div class="sys-meta">
               <span class="sys-n">{c.n}</span>
@@ -177,7 +183,10 @@ const systemAlts = {
         </div>
         <a href="/energy/" class="btn-light">Explore energy →</a>
       </div>
-      <img src="/catalog_images/p47_0.jpg" alt="Home battery wall and solar storage" class="energy-img" loading="lazy" decoding="async" />
+      <picture style="display:contents">
+        <source type="image/webp" srcset="/catalog_images/p47_0.webp" />
+        <img src="/catalog_images/p47_0.jpg" alt="Home battery wall and solar storage" class="energy-img" loading="lazy" decoding="async" />
+      </picture>
     </div>
   </section>
 
@@ -207,7 +216,10 @@ const systemAlts = {
           </span>
         </div>
       </div>
-      <img src="/catalog_images/p19_0.jpg" alt="The Homynex app controlling devices room by room" class="app-img" loading="lazy" decoding="async" />
+      <picture style="display:contents">
+        <source type="image/webp" srcset="/catalog_images/p19_0.webp" />
+        <img src="/catalog_images/p19_0.jpg" alt="The Homynex app controlling devices room by room" class="app-img" loading="lazy" decoding="async" />
+      </picture>
     </div>
   </section>
 

@@ -38,14 +38,14 @@ Homynex is a whole-home smart system — lighting, locks, cameras, sensors, clim
 A no-monthly-fee smart home means you buy the system once and own it outright — there is no subscription, no contract and no monitoring bill. You pay for the hardware and installation a single time, and then it is yours to use at $0/month for as long as you live there. This is the opposite of subscription systems such as Vivint, which are typically sold with a monthly fee and a service agreement so the provider keeps billing you to keep the system running. Homynex is built on the no-monthly-fee model: it is quoted per home as one integrated whole-home package, installed by your own licensed local electrician, and owned outright with $0/month forever. It is supplied by SmartSync Electric and offered across Utah's Wasatch Front, so the cost lives inside the build budget instead of a lifetime of recurring payments.
 
 ## Where to learn more
-- How it works & pricing: https://homynex.com/how-it-works
-- The 11 systems: https://homynex.com/systems
-- For builders: https://homynex.com/builders
-- No monthly fee: https://homynex.com/no-monthly-fee
-- Homynex vs Vivint: https://homynex.com/homynex-vs-vivint
-- Quick facts: https://homynex.com/facts
-- FAQ: https://homynex.com/faq
-- Contact: https://homynex.com/contact
+- How it works & pricing: https://homienex.com/how-it-works
+- The 11 systems: https://homienex.com/systems
+- For builders: https://homienex.com/builders
+- No monthly fee: https://homienex.com/no-monthly-fee
+- Homynex vs Vivint: https://homienex.com/homynex-vs-vivint
+- Quick facts: https://homienex.com/facts
+- FAQ: https://homienex.com/faq
+- Contact: https://homienex.com/contact
 
 ## Last updated
 2026-06-22

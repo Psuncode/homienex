@@ -18,12 +18,24 @@ const more = [
   { label: 'Homynex vs Vivint', href: '/homynex-vs-vivint/' },
   { label: 'Book a walkthrough', href: '/contact/' },
 ];
+
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': 'https://homienex.com/#org',
+  name: 'Homynex',
+  url: 'https://homienex.com',
+};
 ---
 
 <Base
   title="Homynex — Quick Facts | Whole-Home Smart, No Monthly Fee"
   description="The canonical, citable facts about Homynex: a whole-home smart system sold as a one-time purchase with no monthly fee, installed by licensed local electricians, quoted as one whole-home package per home."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+  </Fragment>
+
   <Nav />
 
   <section class="facts">

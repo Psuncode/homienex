@@ -24,4 +24,4 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
-Sitemap: https://homynex.com/sitemap-index.xml
+Sitemap: https://homienex.com/sitemap-index.xml

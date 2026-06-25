@@ -75,7 +75,7 @@ const serviceSchema = {
   serviceType: 'Home solar, battery storage and EV charging',
   description:
     'Homynex energy brings solar, home backup power and EV charging into one app — part of the whole-home Homynex system, a one-time purchase with no monthly fee.',
-  provider: { '@id': 'https://homynex.com/#org' },
+  provider: { '@id': 'https://homienex.com/#org' },
   areaServed: { '@type': 'State', name: 'Utah' },
 };
 ---
@@ -101,15 +101,18 @@ const serviceSchema = {
           and EV charging, all managed in the Homynex app.
         </p>
       </div>
-      <img
-        src="/catalog_images/p47_0.jpg"
-        alt="Home battery storage wall paired with rooftop solar"
-        class="hero-img"
-        fetchpriority="high"
-        decoding="async"
-        width="660"
-        height="580"
-      />
+      <picture style="display:contents">
+        <source type="image/webp" srcset="/catalog_images/p47_0.webp" />
+        <img
+          src="/catalog_images/p47_0.jpg"
+          alt="Home battery storage wall paired with rooftop solar"
+          class="hero-img"
+          fetchpriority="high"
+          decoding="async"
+          width="660"
+          height="580"
+        />
+      </picture>
     </div>
   </section>
 
@@ -131,7 +134,10 @@ const serviceSchema = {
     <div class="pillar-rows">
       {pillars.map((p) => (
         <article class="pillar">
-          <img src={p.img} alt={p.alt} class="pillar-img" loading="lazy" decoding="async" width="420" height="300" />
+          <picture style="display:contents">
+            <source type="image/webp" srcset={p.img.replace('.jpg', '.webp')} />
+            <img src={p.img} alt={p.alt} class="pillar-img" loading="lazy" decoding="async" width="420" height="300" />
+          </picture>
           <div class="pillar-body">
             <p class="pillar-kicker">{p.kicker}</p>
             <h3 class="pillar-name">{p.name}</h3>

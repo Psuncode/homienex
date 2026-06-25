@@ -38,13 +38,13 @@ const collectionSchema = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
   name: 'The 11 Homynex systems',
-  url: 'https://homynex.com/systems',
-  about: { '@id': 'https://homynex.com/#org' },
+  url: 'https://homienex.com/systems',
+  about: { '@id': 'https://homienex.com/#org' },
   mainEntity: {
     '@type': 'ItemList',
     numberOfItems: 11,
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Entry System', url: 'https://homynex.com/systems/entry' },
+      { '@type': 'ListItem', position: 1, name: 'Entry System', url: 'https://homienex.com/systems/entry' },
       { '@type': 'ListItem', position: 2, name: 'Lighting & Power' },
       { '@type': 'ListItem', position: 3, name: 'Sensors & Control' },
       { '@type': 'ListItem', position: 4, name: 'Video Surveillance' },
@@ -120,15 +120,18 @@ const collectionSchema = {
               data-modal-open={`modal-${s.id}`}
               aria-haspopup="dialog"
             >
-              <img
-                src={s.img}
-                alt={systemAlts[s.name] || s.name}
-                class="card-img"
-                loading="lazy"
-                decoding="async"
-                width="400"
-                height="180"
-              />
+              <picture style="display:contents">
+                <source type="image/webp" srcset={s.img.replace('.jpg', '.webp')} />
+                <img
+                  src={s.img}
+                  alt={systemAlts[s.name] || s.name}
+                  class="card-img"
+                  loading="lazy"
+                  decoding="async"
+                  width="400"
+                  height="180"
+                />
+              </picture>
               <span class="card-body">
                 <span class="card-meta">
                   <span class="card-n">{s.n}</span>
@@ -173,15 +176,18 @@ const collectionSchema = {
       <div class="modal-backdrop" data-modal-close></div>
       <div class="modal-dialog" tabindex="-1">
         <button type="button" class="modal-x" data-modal-close aria-label="Close quick view">✕</button>
-        <img
-          src={s.img}
-          alt={systemAlts[s.name] || s.name}
-          class="modal-img"
-          loading="lazy"
-          decoding="async"
-          width="780"
-          height="220"
-        />
+        <picture style="display:contents">
+          <source type="image/webp" srcset={s.img.replace('.jpg', '.webp')} />
+          <img
+            src={s.img}
+            alt={systemAlts[s.name] || s.name}
+            class="modal-img"
+            loading="lazy"
+            decoding="async"
+            width="780"
+            height="220"
+          />
+        </picture>
         <div class="modal-body">
           <p class="modal-tag">{s.tag}</p>
           <div class="modal-titlerow">

@@ -26,7 +26,7 @@ const appSchema = {
   description:
     'The Homynex app controls every connected device in the home from one screen — multi-home management, room-based control, scenes, and family sharing. Powered by Tuya, included with the Homynex system at no monthly fee.',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-  publisher: { '@id': 'https://homynex.com/#org' },
+  publisher: { '@id': 'https://homienex.com/#org' },
 };
 ---
 
@@ -57,15 +57,18 @@ const appSchema = {
         </span>
       </div>
     </div>
-    <img
-      src="/catalog_images/p19_0.jpg"
-      alt="The Homynex app home screen controlling devices room by room"
-      class="hero-img"
-      fetchpriority="high"
-      decoding="async"
-      width="540"
-      height="520"
-    />
+    <picture style="display:contents">
+      <source type="image/webp" srcset="/catalog_images/p19_0.webp" />
+      <img
+        src="/catalog_images/p19_0.jpg"
+        alt="The Homynex app home screen controlling devices room by room"
+        class="hero-img"
+        fetchpriority="high"
+        decoding="async"
+        width="540"
+        height="520"
+      />
+    </picture>
   </section>
 
   <!-- FEATURES -->
@@ -100,15 +103,18 @@ const appSchema = {
           ))}
         </div>
       </div>
-      <img
-        src="/catalog_images/p19_2.jpg"
-        alt="The Homynex app room and scene control screens"
-        class="steps-img"
-        loading="lazy"
-        decoding="async"
-        width="560"
-        height="460"
-      />
+      <picture style="display:contents">
+        <source type="image/webp" srcset="/catalog_images/p19_2.webp" />
+        <img
+          src="/catalog_images/p19_2.jpg"
+          alt="The Homynex app room and scene control screens"
+          class="steps-img"
+          loading="lazy"
+          decoding="async"
+          width="560"
+          height="460"
+        />
+      </picture>
     </div>
   </section>
 

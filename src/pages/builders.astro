@@ -103,7 +103,7 @@ const serviceSchema = {
   provider: {
     '@type': 'Organization',
     name: 'Homynex',
-    url: 'https://homynex.com',
+    url: 'https://homienex.com',
     parentOrganization: { '@type': 'Organization', name: 'SmartSync Electric Ltd' },
   },
   areaServed: { '@type': 'State', name: 'Utah' },
@@ -130,15 +130,18 @@ const serviceSchema = {
   <!-- HERO -->
   <section class="hero">
     <div class="hero-media">
-      <img
-        src="/catalog_images/p51_1.jpg"
-        alt="Modern living room at dusk with integrated Homynex lighting, climate and shades, ready to spec across a development"
-        class="hero-img"
-        fetchpriority="high"
-        decoding="async"
-        width="1320"
-        height="720"
-      />
+      <picture style="display:contents">
+        <source type="image/webp" srcset="/catalog_images/p51_1.webp" />
+        <img
+          src="/catalog_images/p51_1.jpg"
+          alt="Modern living room at dusk with integrated Homynex lighting, climate and shades, ready to spec across a development"
+          class="hero-img"
+          fetchpriority="high"
+          decoding="async"
+          width="1320"
+          height="720"
+        />
+      </picture>
       <div class="hero-scrim" aria-hidden="true"></div>
     </div>
     <div class="hero-content">

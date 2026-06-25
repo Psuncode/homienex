@@ -99,7 +99,7 @@ const serviceSchema = {
   serviceType: 'Smart entry — locks, video doorbells, access hubs',
   description:
     'The Homynex Entry System covers smart locks, video doorbells and access hubs, installed by a licensed local electrician as part of the whole-home Homynex package — a one-time purchase with no monthly fee.',
-  provider: { '@id': 'https://homynex.com/#org' },
+  provider: { '@id': 'https://homienex.com/#org' },
   areaServed: { '@type': 'State', name: 'Utah' },
 };
 
@@ -107,9 +107,9 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://homynex.com/' },
-    { '@type': 'ListItem', position: 2, name: 'Systems', item: 'https://homynex.com/systems' },
-    { '@type': 'ListItem', position: 3, name: 'Entry System', item: 'https://homynex.com/systems/entry' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://homienex.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Systems', item: 'https://homienex.com/systems' },
+    { '@type': 'ListItem', position: 3, name: 'Entry System', item: 'https://homienex.com/systems/entry' },
   ],
 };
 ---
@@ -150,15 +150,18 @@ const breadcrumbSchema = {
         <a href="/systems/" class="btn-ghost">All systems</a>
       </div>
     </div>
-    <img
-      src="/catalog_images/p12_2.jpg"
-      alt="Smart lock and video doorbell at a front door"
-      class="hero-img"
-      fetchpriority="high"
-      decoding="async"
-      width="600"
-      height="480"
-    />
+    <picture style="display:contents">
+      <source type="image/webp" srcset="/catalog_images/p12_2.webp" />
+      <img
+        src="/catalog_images/p12_2.jpg"
+        alt="Smart lock and video doorbell at a front door"
+        class="hero-img"
+        fetchpriority="high"
+        decoding="async"
+        width="600"
+        height="480"
+      />
+    </picture>
   </section>
 
   <!-- HIGHLIGHTS -->
@@ -177,15 +180,18 @@ const breadcrumbSchema = {
   <section class="groups" data-reveal>
     {groups.map((g, i) => (
       <div class={`group ${i % 2 === 1 ? 'group-reverse' : ''}`}>
-        <img
-          src={g.img}
-          alt={groupAlts[g.name] || g.name}
-          class="group-img"
-          loading="lazy"
-          decoding="async"
-          width="440"
-          height="340"
-        />
+        <picture style="display:contents">
+          <source type="image/webp" srcset={g.img.replace('.jpg', '.webp')} />
+          <img
+            src={g.img}
+            alt={groupAlts[g.name] || g.name}
+            class="group-img"
+            loading="lazy"
+            decoding="async"
+            width="440"
+            height="340"
+          />
+        </picture>
         <div class="group-body">
           <div class="group-kicker">{g.kicker}</div>
           <h2 class="group-name">{g.name}</h2>

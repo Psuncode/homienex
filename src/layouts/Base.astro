@@ -11,6 +11,8 @@ const {
   canonical,
 } = Astro.props;
 const canonicalURL = canonical ?? new URL(Astro.url.pathname, Astro.site).href;
+// Google Search Console: paste the token from GSC's "HTML tag" verification method here.
+const googleSiteVerification = '';
 ---
 
 <!doctype html>
@@ -22,6 +24,7 @@ const canonicalURL = canonical ?? new URL(Astro.url.pathname, Astro.site).href;
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
     <meta name="theme-color" content="#1E5B43" />
+    {googleSiteVerification && <meta name="google-site-verification" content={googleSiteVerification} />}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

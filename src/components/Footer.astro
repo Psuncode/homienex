@@ -16,7 +16,9 @@ const cols = [
     items: [
       { label: 'How pricing works', href: '/how-it-works/' },
       { label: 'No monthly fee', href: '/no-monthly-fee/' },
+      { label: 'What it costs', href: '/cost/' },
       { label: 'Homynex vs Vivint', href: '/homynex-vs-vivint/' },
+      { label: 'Homynex vs Control4', href: '/homynex-vs-control4/' },
       { label: 'FAQ', href: '/faq/' },
       { label: 'For builders', href: '/builders/' },
     ],
@@ -26,9 +28,20 @@ const cols = [
     items: [
       { label: 'About Homynex', href: '/about/' },
       { label: 'The Homynex App', href: '/app/' },
+      { label: 'New construction', href: '/new-construction/' },
       { label: 'Find an installer', href: '/install/' },
       { label: 'Book a walkthrough', href: '/contact/' },
       { label: 'Warranty & service', href: '/contact/' },
+    ],
+  },
+  {
+    h: 'Areas we serve',
+    items: [
+      { label: 'Lehi', href: '/install/lehi/' },
+      { label: 'Provo', href: '/install/provo/' },
+      { label: 'Salt Lake City', href: '/install/salt-lake-city/' },
+      { label: 'St. George', href: '/install/st-george/' },
+      { label: 'All service areas', href: '/install/' },
     ],
   },
 ];
@@ -81,7 +94,7 @@ const cols = [
 <style>
   .ft { background: var(--dark); color: var(--on-dark); font-family: 'Hanken Grotesk', sans-serif; }
   .ft-inner { max-width: 1240px; margin: 0 auto; padding: 80px 32px 40px; }
-  .ft-grid { display: grid; grid-template-columns: 1.7fr 1fr 1fr 1fr; gap: 40px; }
+  .ft-grid { display: grid; grid-template-columns: 1.6fr repeat(4, 1fr); gap: 40px; }
   .ft-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
   .ft-mark {
     width: 36px; height: 36px; border-radius: 9px; background: var(--green); color: #fff;

@@ -13,7 +13,7 @@ const links = [
 <header class="nav">
   <div class="nav-inner">
     <a href="/" class="brand" aria-label="Homynex — home">
-      <span class="brand-mark" aria-hidden="true">H</span>
+      <img src="/logo-mark.svg" class="brand-mark" alt="" width="34" height="34" />
       <span class="brand-word">HOMYNEX</span>
     </a>
     <nav class="nav-links" aria-label="Primary">
@@ -77,11 +77,7 @@ const links = [
     display: flex; align-items: center; gap: 32px;
   }
   .brand { display: flex; align-items: center; gap: 11px; text-decoration: none; color: var(--ink); }
-  .brand-mark {
-    width: 32px; height: 32px; border-radius: 9px; background: var(--green); color: #fff;
-    display: flex; align-items: center; justify-content: center;
-    font: 800 15px/1 'Schibsted Grotesk', sans-serif;
-  }
+  .brand-mark { width: 34px; height: 34px; display: block; }
   .brand-word { font: 700 19px/1 'Schibsted Grotesk', sans-serif; letter-spacing: -0.01em; }
   .nav-links { margin-left: auto; display: flex; align-items: center; gap: 28px; }
   .nav-links a {

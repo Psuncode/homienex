@@ -1,0 +1,9 @@
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Homynex">
+  <rect width="120" height="120" rx="28" fill="#1E5B43"/>
+  <g fill="none" stroke="#ffffff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M37 53 L60 32 L83 53"/>
+    <path d="M46 50 V87"/>
+    <path d="M74 50 V87"/>
+    <path d="M46 68.5 H74"/>
+  </g>
+</svg>
